@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>三级检查</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/sjjc.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left" id="backBtn"></a>
+		<h1 class="mui-title">三级检查</h1>
+		<a class="mui-icon mui-pull-right" id="cacleBtn">取消</a>
+	</header>
+	<div id="main-body" class="mui-content">
+		<form id="formTower" data-id="1" data-page="1" data-loop-id="-1" data-code="DLFJ_SJSC" class="mui-input-group" method="get" action="sjjc-1-2.html">
+			<div class="mui-row form-title">塔杆编号</div>
+			<div class="mui-input-row form-select">
+				<input type="text" format="options" readonly="readonly" required="true" data-options='[]' name="text_tower_number" value="" placeholder="请选择" />
+                <input type="text" class="hide" name="tower_number" value="" />
+				<span class="mui-icon mui-icon-forward"></span>
+			</div>
+			<div class="mui-row form-title">施工记录</div>
+			<div class="mui-input-row form-select">
+				<input type="text" format="options" readonly="readonly" required="true" data-options='[]' name="text_sgjl" value="" placeholder="请选择" />
+                <input type="text" class="hide" name="sgjl" value="" />
+				<span class="mui-icon mui-icon-forward"></span>
+			</div>
+			<div class="mui-row form-title">施工班组</div>
+			<div class="mui-input-row form-input bottom-line form-select">
+				<input type="text" readonly="readonly" name="text_banzu" required="true" value="" format="options" maxlength="32" placeholder="" />
+				<input type = "text" class = "hide" name = "banzu" value = "" /> 
+			</div>
+			<div class="mui-row form-title">基础型式</div>
+			<div class="mui-input-row form-input bottom-line">
+				<input type="text" readonly="readonly" name="jcxs" required="true" value="" format="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-line"></div>
+			<div class="mui-row form-date bottom-line">
+				<div class="mui-col-sm-5 mui-col-xs-5 form-sub-title">检查日期</div>
+				<div class="mui-col-sm-7 mui-col-xs-7">
+					<input type="text" format="date" readonly="readonly" required="true" name="checkDate" value="" />
+					<span class="mui-icon mui-icon-forward"></span>
+				</div>
+			</div>
+			<div class="mui-row form-line"></div>
+			<div class="mui-row form-title">检查者</div>
+			<div class="mui-input-row form-input bottom-line form-select">
+				<input type="text"  name="jcr" required="true" value="" maxlength="32" placeholder="" />
+			</div>			
+			<div class="mui-button-row notfull">
+				<button type="button" data-loading-text="下一步" class="mui-btn" id="btnStepNext">下一步</button>
+			</div>
+		</form>
+	</div>
+    <script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="../../plugins/mui/js/mui.min.js"></script>
+	<script type="text/javascript" src="../../plugins/mui/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../common/js/common.js"></script>
+    <script type="text/javascript" src="js/sjjc.js"></script>
+</body>
+</html>

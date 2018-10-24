@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>三级检查</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/sjjc.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left" id="backBtn"></a>
+		<h1 class="mui-title">地螺式自检表</h1>
+		<a class="mui-icon mui-pull-right" id="cacleBtn">取消</a>
+	</header>
+	<div id="main-body" class="mui-content">
+		<form id="formTower" data-id="2" data-page="2" data-loop-id="-1" data-code="DLZJ_SJSC" class="mui-input-group" method="get" action="sjjc-2-3.html">
+			<div class="mui-row form-title">基础坑深 mm</div>
+			<div class="mui-row form-grid ">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>A</label>
+							<input type="decimal" maxlength="16" required="true" name="jcks_a" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>B</label>
+							<input type="decimal" maxlength="16" required="true" name="jcks_b" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>C</label>
+							<input type="decimal" maxlength="16" required="true" name="jcks_c" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>D</label>
+							<input type="decimal" maxlength="16" required="true" name="jcks_d" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+            
+            <div class="mui-row form-title">基础底座尺寸 mm</div>
+			<div class="mui-row form-grid ">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>A</label>
+							<input type="decimal" maxlength="16" required="true" name="dzcc_a" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>B</label>
+							<input type="decimal" maxlength="16" required="true" name="dzcc_b" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>C</label>
+							<input type="decimal" maxlength="16" required="true" name="dzcc_c" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>D</label>
+							<input type="decimal" maxlength="16" required="true" name="dzcc_d" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+			
+			<div class="mui-row form-title">地螺规格</div>
+			<div class="mui-row form-grid ">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>A</label>
+							<input type="decimal" maxlength="16" required="true" name="dlgg_a" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>B</label>
+							<input type="decimal" maxlength="16" required="true" name="dlgg_b" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>C</label>
+							<input type="decimal" maxlength="16" required="true" name="dlgg_c" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>D</label>
+							<input type="decimal" maxlength="16" required="true" name="dlgg_d" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+            
+            <div class="mui-row form-title">钢筋保护层厚度 mm</div>
+			<div class="mui-row form-grid ">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>A</label>
+							<input type="decimal" maxlength="16" required="true" name="bhchd_a" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>B</label>
+							<input type="decimal" maxlength="16" required="true" name="bhchd_b" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>C</label>
+							<input type="decimal" maxlength="16" required="true" name="bhchd_c" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>D</label>
+							<input type="decimal" maxlength="16" required="true" name="bhchd_d" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+            
+            <div class="mui-row form-title">立柱断面尺寸 mm</div>
+			<div class="mui-row form-grid ">
+				<div class="mui-row form-sub-title">
+                    <div class="mui-col-sm-12 mui-col-xs-12">最大值</div>
+                </div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>A</label>
+							<input type="decimal" maxlength="16" required="true" name="lzdmcc_a1" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>B</label>
+							<input type="decimal" maxlength="16" required="true" name="lzdmcc_b1" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>C</label>
+							<input type="decimal" maxlength="16" required="true" name="lzdmcc_c1" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>D</label>
+							<input type="decimal" maxlength="16" required="true" name="lzdmcc_d1" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+            <div class="mui-row form-grid ">
+				<div class="mui-row form-sub-title">
+                    <div class="mui-col-sm-12 mui-col-xs-12">最小值</div>
+                </div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>A</label>
+							<input type="decimal" maxlength="16" required="true" name="lzdmcc_a2" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>B</label>
+							<input type="decimal" maxlength="16" required="true" name="lzdmcc_b2" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>C</label>
+							<input type="decimal" maxlength="16" required="true" name="lzdmcc_c2" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>D</label>
+							<input type="decimal" maxlength="16" required="true" name="lzdmcc_d2" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+            
+            <div class="mui-row form-title">基础顶面高差 mm</div>
+			<div class="mui-row form-grid ">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>A</label>
+							<input type="decimal" maxlength="16" required="true" name="jcdmgc_a" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>B</label>
+							<input type="decimal" maxlength="16" required="true" name="jcdmgc_b" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>C</label>
+							<input type="decimal" maxlength="16" required="true" name="jcdmgc_c" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>D</label>
+							<input type="decimal" maxlength="16" required="true" name="jcdmgc_d" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+           
+			<div class="mui-button-row">
+				<button type="button" data-loading-text="下一步" class="mui-btn" id="btnStepNext">下一步</button>
+			</div>
+		</form>
+	</div>
+    <script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="../../plugins/mui/js/mui.min.js"></script>
+	<script type="text/javascript" src="../../plugins/mui/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../common/js/common.js"></script>
+    <script type="text/javascript" src="js/sjjc.js"></script>
+</body>
+</html>

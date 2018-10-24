@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>基础详情</title>
+		<link rel="stylesheet" type="text/css" href="../mui/css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../mui/css/mui.picker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../common/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/progressManagement.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">基础详情</h1>
+		</header>
+		<div class="mui-content">
+		    <form class="mui-input-group" action="progress_basicsList.html">
+		        <div class="mui-row form-title detail-title">塔杆编码<span>8S036</span></div>
+				<button type="button" class="mui-btn mui-btn-block" id = "btn-sub">发布</button>
+				<div class="mui-scroll-wrapper listContent listDetail">
+				    <div class="mui-scroll">
+				        <!--这里放置真实显示的DOM内容-->
+				        <div class="aotoFill">
+				        	<div>A完成日期</div>
+				        	<input type="text" name = "date_leve1_1" readonly="readonly" value = "2018-03-21"/>
+				        	<div>A1完成日期</div>
+				        	<input type="text" name = "date_leve1_1" readonly="readonly" value = "2018-03-21"/>
+				        	<div>A2完成日期</div>
+				        	<input type="text" name = "date_leve1_1" readonly="readonly" value = "2018-03-21"/>
+				        </div>
+				        <div class="mui-row form-title">B完成日期</div>
+				        <div class="mui-input-row">
+				        	<input type="text" format="date" readonly="readonly" required="true" name="date_leve1_1" value=""/>
+				        </div>	 				        				        
+				        
+				    </div>
+				</div>
+				
+				
+				
+		        
+		    </form>
+		</div>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../mui/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../mui/js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../common/js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/progressManagement.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

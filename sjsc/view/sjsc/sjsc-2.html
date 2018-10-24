@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>三交三查</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/sjsc.css"/>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" id = "backBtn"></a>
+		    <a id="record" class="mui-icon mui-pull-right">记录</a>
+		    <sapn class="mui-title">三交三查</sapn>
+		</header>		
+		<div class="mui-content">
+			<form action="" method="get" format = "listData" >								
+				<div class="mui-row pickall">
+				    <div class="mui-col-xs-8 pick-bz">请选择推送班组</div>
+				    <div class="mui-col-xs-4">	
+				    	<div class="mui-input-row mui-checkbox mui-left pickall-right">
+				    	  <label>全选</label>
+				    	  <input name="checkbox1" type="checkbox" checked = "false">
+				    	</div>			 	  
+				    </div>
+				</div>
+				<button type="button" class="mui-btn mui-btn-block" id = "btn-sub">推送</button>
+			    <div class="mui-scroll-wrapper" id = "bzList">
+			        <div class="mui-scroll bzListCon">		            
+				        <!--<div class="mui-input-row mui-checkbox mui-left">		          
+		                  <label>动态显示可选择的班组名称</label>
+				          <input name="teamName" type="checkbox"  class = "listgroup" value="111">	         
+				        </div>-->
+			        </div>
+			    </div>	
+			</form>		
+		</div>
+		
+		<script src="../../plugins/mui/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
+		<script src="../../common/js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/sjsc-pick.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

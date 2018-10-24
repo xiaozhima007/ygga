@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>三交三查记录</title>
+  <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/sjsc.css"/>
+  <link rel="stylesheet" type="text/css" href="../../common/css/common.css"/>
+  <link rel="stylesheet" type="text/css" href="css/sjscrecord.css"/>
+ </head>
+ <body>
+ 	<header class="mui-bar mui-bar-nav">
+ 	    <a class="mui-icon mui-icon-left-nav mui-pull-left" id = "backBtn"></a>
+ 	    <h1 class="mui-title">三交三查记录</h1>
+		<a id="detail" class="mui-icon mui-pull-right">查看</a>
+ 	</header>
+ 	<div class="mui-content mui-scroll-wrapper" id = "calendar">
+ 		<div class="mui-scroll">
+			<div class="direction">
+				<span class = "mui-icon mui-icon-arrowleft" id = "dirL"></span>			
+				<span class = "timeTitle"></span>
+				<span class = "mui-icon mui-icon-arrowright" id = "dirR"></span>
+			</div>	
+			<div class="contentRecord">
+				<div class="conTitle">
+					<span>周日</span>
+					<span>周一</span>
+					<span>周二</span>
+					<span>周三</span>
+					<span>周四</span>
+					<span>周五</span>
+					<span>周六</span>
+				</div>
+				<div class="conDate"></div>	
+			</div>
+			<div class = "unreadbz">未读班组</div>	
+			<div class = "unreadbzlist">
+				<div id = "bzRecord">
+					
+						<ul class="mui-table-view">
+							<!--<li class="mui-table-view-cell">第一班组</li> 
+							<li class="mui-table-view-cell">第二班组</li> 		           -->
+						</ul>
+				   
+				</div>
+			</div>
+		 </div>
+	</div>
+	<script src="../../plugins/mui/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../plugins/zepto/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../common/js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/sjsc-record.js" type="text/javascript" charset="utf-8"></script>
+ </body>
+</html>
