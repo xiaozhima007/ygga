@@ -1,17 +1,9 @@
 var urlParam;
-var apiBase, userId, tokenId, jsonId ,projId, apptempjsonId= null;
+var apiBase, userId, tokenId, jsonId ,projId= null;
 var formId, formNo, formPage;
 var loopIndex;
 var readonly = false;
-var cacheKey = "_data_sjjc";
-var sgjlData = [
-		{"formId": "DLFJ_SJSC", "id": "1", "name": "地螺式复检表"},
-		{"formId": "DLZJ_SJSC", "id": "2", "name": "地螺式自检表"},
-		{"formId": "JCZJ_SJSC", "id": "3", "name": "基础专检记录"},
-		{"formId": "ZLJDZJ_SJSC", "id": "4", "name": "组立接地专检表"},
-		{"formId": "ZLJDZZJ_SJSC", "id": "5", "name": "组立接地自检表"},
-		{"formId": "ZLJDFJ_SJSC", "id": "6", "name": "组立接地复检表"}];
-var formIdArr = ["DLFJ_SJSC","DLZJ_SJSC","JCZJ_SJSC","ZLJDZJ_SJSC","ZLJDZZJ_SJSC","ZLJDFJ_SJSC"];
+var cacheKey = "_data_qhsb";
 $(document).ready(function() {
 	// MUI框架初始化
 	mui.init();
@@ -23,10 +15,10 @@ $(document).ready(function() {
 		}.bind(this), 3000);
 	});
 	
-	formId = $("form[id=formTower]").data("code");
-	formNo = $("form[id=formTower]").data("id");
-	formPage = $("form[id=formTower]").data("page");
-	loopIndex = $("form[id=formTower]").data("loop-id");
+	formId = $("form[id=qhsb]").data("code");
+	formNo = $("form[id=qhsb]").data("id");
+	formPage = $("form[id=qhsb]").data("page");
+	loopIndex = $("form[id=qhsb]").data("loop-id");
 	loopIndex = parseInt(loopIndex);
 	
 	urlParam = myCommon.getParam();
@@ -42,147 +34,82 @@ $(document).ready(function() {
 			readonly = true;
 			getConstructionListDetail(urlParam["jsonId"]);
 			makeFormReadonly();
-		}else if(urlParam["apptempjsonId"]) {
-			// 获取已存储数据
-			apptempjsonId = urlParam["apptempjsonId"];
-			var resdata = null;
-			getTempjsonList(formIdArr,function(data){
-				$.each(data, function(index,item) {
-					if(apptempjsonId == item["apptempjsonId"]){
-						resdata = item;
-					}
-				});
-				resdata = JSON.parse(resdata["dataJson"]);
-				setFormData(resdata);
-			});
-		}		
+		}
 	} 
 	if(!apiBase || !userId || !tokenId) {
 		myCommon.myAlert("页面传入参数错误", "提示", ["确定"]);
 		return ;
+	}	
+	//选择的塔杆编号及塔型
+	var localData = localStorage.getItem(cacheKey);
+	console.info(`缓存的数据:${localData}`)
+	if(localData){
+		//塔杆编号
+		$(".listTitleFirst span[name = towerNo]").html(JSON.parse(localData)["1"]["towerNo"]);
+		//塔型
+		$(".listTitleFirst span[name = towerType]").html(JSON.parse(localData)["1"]["towerType"]);
 	}
-	if(readonly ==false && $("input[name = search]").length > 0){
-		getConstructionList();
-		getTempjsonList(formIdArr,function(data){
-			createNewList(data)
-		});
-		//下拉刷新
-		var idv = $("#downrefresh");
-		myCommon.dropload(idv,function(){			
-			getConstructionList()
-		})							
-	}
-	//跳转到新建页面
-	$(".createNew").on("tap", function() {
-		var nexturl = $(this).attr("hrefData");
-		if(!nexturl)
-		{
-			console.warn("fail, next page url not found")
-			return ;
-		}				
-		var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId};
-		if(jsonId) {
-			param["jsonId"] = jsonId;
-		}
-		nexturl += "?param=" + JSON.stringify(param);
-		myCommon.loading();
-		window.location.href = nexturl;
-	});
-	
-	//塔杆编码获取
+	//提出时间
+	var Time = new Date(),
+		Year = Time.getFullYear(),
+		Month = Time.getMonth()+1,
+		Day = Time.getDate();				
+	$(".listTitleSecond input[name = tcsj]").val(`${Year}-${Month}-${Day}`)
+	//页面数据获取
     if(readonly == false) {
-	    if($("input[name=tower_number]").length > 0) {
-			var param = {"userId":userId, "tokenId":tokenId, "projId":projId};
-			myCommon.loading();
-			myCommon.ajaxGet({
-				urlV : apiBase + "/getTowerNumber?param="+JSON.stringify(param),
-				successF : function(data) {
-					myCommon.closeLoading();
-					if(data["code"] != "200") {
-						muiToast('获取“塔杆编码”信息失败');
-						return ;
-					}
-					console.log("data: " + JSON.stringify(data["data"]));
-					// 独立数组转换
-					if(typeof(data["data"]) == "object" && (data["data"] instanceof Array) && data["data"].length > 0) {
-						data["data"] = data["data"][0];
-					}
-					
-					//塔杆编码
-					if($("input[name='text_tower_number']").length > 0 && typeof(data["data"]["tower_number"]) == "object") {
-						var tower_number_list = [];
-						$.each(data["data"]["tower_number"], function(index, item) {
-							tower_number_list.push(item);
-						});
-						$("input[name=text_tower_number]").data("options", JSON.stringify(tower_number_list));
-					}
-					//施工班组
-					if($("input[name=text_banzu]").length > 0 && typeof(data["data"]["banzu"]) == "object") {	
-						var banzu_list = [];
-						$.each(data["data"]["banzu"], function(index, item) {
-							banzu_list.push(item);
-						});
-						$("input[name=text_banzu]").data("options", JSON.stringify(banzu_list));
-						if(banzu_list.length > 0) {
-							$("input[name=text_banzu]").val(banzu_list[0]);
-							$("input[name=banzu]").val(banzu_list[0]);
-						}
-					}
-					
-					// URL传入塔杆编码, 自动选中
-					if(urlParam && urlParam["towerNumber"]) {
-						// 获取默认数据(只有第一页有默认值，下面都没有)
-						$("input[name=text_tower_number]").val(urlParam["towerNumber"]);
-						$("input[name=tower_number]").val(urlParam["towerNumber"]);
-						getRecordByTwoerNumber(urlParam["towerNumber"]);
-					} 
-				},
-				errorF : function() {
-					myCommon.closeLoading();
-					muiToast('获取“塔杆编码”信息失败');
-				}
-			});
-			
-		} 
-    }
-	
-	//施工列表获取
-    if(readonly == false && $("input[name=sgjl]").length > 0 && !apptempjsonId)
-    {
-		var sgjl_list = [];
-		$.each(sgjlData, function(index, item) {
-			sgjl_list.push(item["name"]);
-		});
-		$("input[name=text_sgjl]").data("options", JSON.stringify(sgjl_list));		
-    }
-	
-	// 获取监理单位
-    if(readonly == false && $("input[name=jldw]").length > 0)
-    {
 		var param = {"userId":userId, "tokenId":tokenId, "projId":projId};
 		myCommon.loading();
-        myCommon.ajaxGet({
-            urlV : apiBase + "/getSpSuppmtList?param="+JSON.stringify(param),
-            successF : function(data) {
+		myCommon.ajaxGet({
+			urlV : apiBase + "/goodsoutReportView?param="+JSON.stringify(param),
+			successF : function(data) {
 				myCommon.closeLoading();
-                if(data["code"] != "200") {
-                    muiToast('获取“监理单位”信息失败');
-                    return ;
-                }
-                console.log("data: " + JSON.stringify(data));
-                var jldw_list = [];
-                $.each(data["data"], function(index, item) {
-                    jldw_list.push(item["supplierName"]);
-                });
-                $("input[name=text_jldw]").data("options", JSON.stringify(jldw_list));
-            },
-            errorF : function() {
+				if(data["code"] != "200") {
+					muiToast('获取“缺货上报”信息失败');
+					return ;
+				}
+				console.log("data: " + JSON.stringify(data["data"]));				
+				//塔杆编码
+				if($("input[name='text_towerNo']").length > 0 && typeof(data["data"]["towerList"]) == "object") {
+					var tower_number_list = [];
+					$.each(data["data"]["towerList"], function(index, item) {
+						tower_number_list.push([item["tower_number"],item["tower_type"]]);
+					});
+					$("input[name=text_towerNo]").data("options", JSON.stringify(tower_number_list));
+				}
+				//分部工程
+				if($("input[name=text_fbgc]").length > 0 && typeof(data["data"]["fbgc"]) == "object") {	
+					var fbgc_list = [];
+					$.each(data["data"]["fbgc"], function(index, item) {
+						fbgc_list.push(item);
+					});
+					$("input[name=text_fbgc]").data("options", JSON.stringify(fbgc_list));
+				}
+				//物质类型
+				if($("input[name=text_wzlx]").length > 0 && typeof(data["data"]["wzlx"]) == "object") {	
+					var wzlx_list = [];
+					$.each(data["data"]["wzlx"], function(index, item) {
+						wzlx_list.push(item);
+					});
+					$("input[name=text_wzlx]").data("options", JSON.stringify(wzlx_list));
+				}
+				//提出班组
+				$(".listTitleSecond input[name = tcbz]").val(data["data"]["tcbz"]["team_name"])
+				
+				// URL传入塔杆编码, 自动选中
+				if(urlParam && urlParam["towerNumber"]) {
+					// 获取默认数据(只有第一页有默认值，下面都没有)
+					$("input[name=text_tower_number]").val(urlParam["towerNumber"]);
+					$("input[name=tower_number]").val(urlParam["towerNumber"]);
+					getRecordByTwoerNumber(urlParam["towerNumber"]);
+				} 
+			},
+			errorF : function() {
 				myCommon.closeLoading();
-                muiToast('获取“监理单位”信息失败');
-            }
-        });
-	}
-    
+				muiToast('获取“塔杆编码”信息失败');
+			}
+		});
+    }
+	
 	if(readonly == false)
 	{
 		$("form input[type='text']").off("tap").on("input propertychange", function() {
@@ -252,7 +179,7 @@ $(document).ready(function() {
 			$.each(options, function(index, item) {
 				if (typeof(item) == "object")
 				{
-					itemLists.push({"text": item[1], "value": item[0]});
+					itemLists.push({"text": item[0], "value": item[1]});
 				}
 				else
 				{
@@ -268,20 +195,17 @@ $(document).ready(function() {
 				var selectText = selectedItem[0]['text'];
 				console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
 				self.val(selectText);
-				$("input[name="+realName+"]").val(selectVal);
-				//塔杆编码被选择
-				if(realName == "tower_number") {
-					getRecordByTwoerNumber(selectVal);
-				}else if(realName == "sgjl") {
-					// 根据表单类型，页面跳转
-					pageDumpByFormType(selectVal);
+				$("input[name="+realName+"]").val(selectText);
+				if(realName === "towerNo"){
+					$("input[name = towerType]").val(selectVal);
 				}
+				
 			});
 		});
 	}
 	
 	$("#btnStepNext").on("tap", function() {
-		var nexturl = $("form[id=formTower]").attr("action");
+		var nexturl = $("form[id=qhsb]").attr("action");
 		if(!nexturl)
 		{
 			console.warn("fail, next page url not found")
@@ -295,16 +219,7 @@ $(document).ready(function() {
 				return ;
 			}
 		}
-		
-		//var towerNumber = $("input[name=tower_number]").val();
-		//var param = {"towerNumber":towerNumber};
 		var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase,"projId":projId};
-		if(jsonId) {
-			param["jsonId"] = jsonId;
-		}
-		if(apptempjsonId) {
-			param["apptempjsonId"] = apptempjsonId;
-		}
 		nexturl += "?param=" + JSON.stringify(param);
 		myCommon.loading();
 		window.location.href = nexturl;
@@ -315,79 +230,44 @@ $(document).ready(function() {
 		if(!formData) {
 			return ;
 		}
+		formData["userId"] = userId;
+		formData["projId"] = projId;
+		formData["tokenId"] = tokenId;
 		console.info("formdata: ", JSON.stringify(formData));
-		saveConstructionList(formData, function(){		
+		goodsoutReport(formData, function(){		
 			myCommon.closeLoading();
 			myCommon.myAlert("发布成功", "消息", ["确定"], function(){
-				var nexturl = "sjjc-towerList.html";				
-				var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase,"projId":projId};
-				nexturl += "?param=" + JSON.stringify(param);		
-				window.location.href = nexturl;
+				transParam({"action": "refresh"});
 			});
 		});
 		return false;
 	});
 	
 	$("#backBtn").on("tap", function() {				
-		if(formPage == "0") {
+		if(formPage == "1") {
 			transParam({"action": "close"});
 		} else {
-			if(readonly == false){
-				// 保存当前表单信息
-				getFormData(false, false);
-				var chk_data = getCacheDate();
-				var fdata = {};
-				$.each(chk_data, function(page, item) {
-					$.each(item, function(key, value) {
-						if(value != "") {
-							fdata[key] = value;
-						}
-					});
-				});
-					
-				saveTempjson(formId ,fdata);		
-			}
 			transParam({"action": "back"});
 		}		
 	});
 	
-	$("#cacleBtn").on("tap", function() {
-		var nexturl = "sjjc-towerList.html";				
-		var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase,"projId":projId};
-		nexturl += "?param=" + JSON.stringify(param);
-		if(readonly == false){
-			mui.confirm('确定放弃本次编辑？','提示',['取消','确认'],function (e) {
-				if(e.index){
-					myCommon.loading();
-					window.location.href = nexturl;
-				}
-			},'div')
-		}else{
-			window.location.href = nexturl;
-		}
+	$("#cacleBtn").on("tap", function() {	
+		mui.confirm('确定放弃本次缺货上报？','提示',['取消','确认'],function (e) {
+			if(e.index){
+				myCommon.loading();
+				transParam({"action": "close"});
+			}
+		},'div')
 	});
-	
-	// 自动选中施工记录
-	$.each(sgjlData, function(index, item) {
-		if(item["id"] == formNo) {
-			$("input[name=text_sgjl]").val(item["name"]);
-			$("input[name=sgjl]").val(item["name"]);
-		}
-	})
 });
 
-function inputFilter(text, regex)
-{
-	if(text != "")
-	{
-		while(true)
-		{
-			if(text != "" && !text.match(regex))
-			{
+function inputFilter(text, regex){
+	if(text != ""){
+		while(true){
+			if(text != "" && !text.match(regex)){
 				text = text.substr(0, text.length-1);
 			}
-			else
-			{
+			else{
 				break;
 			}
 		}
@@ -493,8 +373,7 @@ function getFormData(isPublish, requiredBreak){
 	}
 }
 
-function getCacheDate()
-{
+function getCacheDate(){
 	var chk_data = {};
 	var chk_content = window.localStorage.getItem(cacheKey);
 	if(chk_content != null && chk_content != "") {
@@ -512,28 +391,7 @@ function getCacheDate()
 	return chk_data;
 }
 
-//function loadCacheData() {
-//	var chk_data = getCacheDate();
-//	if(chk_data && chk_data[formPage]) {
-//		// 塔杆编码不可覆盖
-//		if($("input[name='text_tower_number']").length > 0 && $("input[name='text_tower_number']").val() != "") {
-//			//清除掉塔杆编码
-//			delete chk_data[formPage]["text_tower_number"];
-//			delete chk_data[formPage]["tower_number"];
-//		}
-//		
-//		if(loopIndex < 0) {
-//			setFormData(chk_data[formPage]);
-//		}else if(chk_data[formPage]["_s_data"] && chk_data[formPage]["_s_data"][loopIndex]) {
-//			setFormData(chk_data[formPage]["_s_data"][loopIndex]);
-//		}
-//		return true;
-//	}
-//	return false;
-//}
-
-function setFormData(data)
-{
+function setFormData(data){
 	$.each(data, function(name, value) {
 		if(value) {
 			var obj = $("input[name='"+name+"']");
@@ -549,71 +407,15 @@ function setFormData(data)
 		}
 	});
 }
-
-function makeFormReadonly()
-{
+function makeFormReadonly(){
 	$("#btnStepPublish").attr("disabled", true);
 	$(".mui-input-row input, .mui-row input").attr("readonly", true);
 }
-
-function pageDumpByFormType(typeName)
-{
-	var fId = null;
-	$.each(sgjlData, function(index, item) {
-		if(item["name"] == typeName) {
-			fId = item["id"];
-		}
-	});
-	if(fId != null && fId != formNo) {
-		var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase,"projId":projId};
-		var towerNumber = $("input[name=tower_number]").val();
-		if(towerNumber != "") {
-			param["towerNumber"] = towerNumber;
-		}
-		dumpurl = "sjjc-" + fId + "-1.html?param=" + JSON.stringify(param);
-		window.location.replace(dumpurl);
-	}
-}
-
-// 获取施工记录，施工班组等信息
-function getRecordByTwoerNumber(towerNumber)
-{
-	var param = {"userId":userId, "formId":formId, "towerNumber": towerNumber, "tokenId":tokenId,"projId":projId};
-	console.log(param)
-	myCommon.loading();
-	myCommon.ajaxGet({
-		urlV : apiBase + "/getRecordByTwoerNumber1?param="+JSON.stringify(param),
-		successF : function(data) {
-			myCommon.closeLoading();
-			if(data["code"] != "200") {
-				muiToast('获取“根据塔杆编码获取默认值记录”信息失败');
-				return ;
-			}
-			console.log("data: " + JSON.stringify(data));
-			if(typeof(data["data"]["banzu"]) != "undefined") {
-			delete data["data"]["banzu"];
-			}
-			setFormData(data["data"]);
-			//调取未保存表单数据
-			//loadCacheData();
-		},
-		errorF : function() {
-			myCommon.closeLoading();
-			muiToast('获取“根据塔杆编码获取默认值记录”信息失败');
-		}
-	});
-}
-
 // 保存数据
-function saveConstructionList(data, callback){
-	data["formId"] = formId;
-	var data = {"userId":userId, "tokenId":tokenId, "data": data,"projId":projId, "apptempjsonId":""};
-	if(apptempjsonId){
-		data["apptempjsonId"] = apptempjsonId;
-	}
+function goodsoutReport(data, callback){
 	myCommon.loading();
 	myCommon.ajaxPost({
-		urlV : apiBase + "/saveConstructionList",
+		urlV : apiBase + "/goodsoutReport",
 		data: data,
 		successF : function(data) {
 			myCommon.closeLoading();
@@ -630,194 +432,20 @@ function saveConstructionList(data, callback){
 		}
 	});
 }
-//施工列表获取
-function getConstructionList(){
-	var param = {"userId":userId, "tokenId":tokenId, "projId":projId, "formId":formIdArr};
-	myCommon.loading();
-	myCommon.ajaxGet({
-		urlV : apiBase + "/getConstructionList?param="+JSON.stringify(param),
-		successF : function(data) {
-			myCommon.closeLoading();
-			if(data["code"] != "200") {
-				muiToast('获取列表信息失败');
-				return ;
-			}
-			console.log("data: " + JSON.stringify(data["data"]));
-			if(data["data"]){
-				var listData = "";
-				$.each(data["data"], function(index,item) {
-					listData +='<li class="mui-table-view-cell towerli"><a jsonId = '
-									+item["jsonId"]+' formId = '+item["formId"]
-									+' class="mui-navigate-right"><div class = "tower_number">杆塔编码　<span>'
-									+item["gtbm"]+'</span></div><div class = "sgjl">'
-									+item["bgmc"]+'</div><div class = "jcr">检查者　<span>'
-									+item["jcr"]+'</span></div><div class = "jcrq">检查日期　<span>'
-									+item["checkDate"]+'</span></div></a></li>';					
-				});
-				$("#towerComplete").html(listData);				
-				//跳转到详情
-				$("#towerComplete .towerli a").on("tap",function(){
-					var fId = null;
-					var formId = $(this).attr("formId");
-					$.each(sgjlData, function(index, item) {
-						if(item["formId"] == formId ) {
-							fId = item["id"];
-						}
-					});
-					var jsonId = $(this).attr("jsonId");		
-					var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId};
-					if(jsonId) {
-						param["jsonId"] = jsonId;
-					}
-					var dumpurl = "sjjc-" + fId + "-1.html?param=" + JSON.stringify(param);
-					myCommon.loading();
-					window.location.href = dumpurl;							
-				})
-				//搜索功能没有接口，暂不开发 。(可参考jdgl)						
-			}
-		},
-		errorF : function() {
-			myCommon.closeLoading();
-			muiToast('获取“塔杆编码”信息失败');
+function loadCacheData() {
+	var chk_data = getCacheDate();
+	if(chk_data && chk_data[formPage]) {
+		// 塔杆编码不可覆盖
+		if($("input[name='text_tower_number']").length > 0 && $("input[name='text_tower_number']").val() != "") {
+			//清除掉塔杆编码
+			delete chk_data[formPage]["text_tower_number"];
+			delete chk_data[formPage]["tower_number"];
 		}
-	})
-}
-function getConstructionListDetail(jsonId)
-{
-	var param = {"userId":userId, "jsonId":jsonId, "tokenId":tokenId,"projId":projId};
-	myCommon.loading();
-	myCommon.ajaxGet({
-		urlV : apiBase + "/getConstructionListDetail?param="+JSON.stringify(param),
-		successF : function(data) {
-			myCommon.closeLoading();
-			if(data["code"] != "200") {
-				muiToast('获取信息失败');
-				return ;
-			}
-			console.log("data: " + JSON.stringify(data));
-			if(typeof(data["data"]) == "string"){
-				data["data"] = JSON.parse(data["data"]);
-			}
-			if(loopIndex < 0){
-				setFormData(data["data"]);
-			}else{
-				setFormData(data["data"]["_s_data"][loopIndex]);
-				//下一步是否可用
-				if(loopIndex == data["data"]["_s_data"].length - 1) {
-					$("#btnStepNext").attr("disabled", true);
-				}
-			}
-		},
-		errorF : function() {
-			myCommon.closeLoading();
-			muiToast('获取信息失败');
+		
+		if(loopIndex < 0) {
+			setFormData(chk_data[formPage]);
 		}
-	});
-}
-//中途保存
-function saveTempjson(baseItemType,jsonData) {
-	var data = {"tokenId":tokenId, "userId":userId, "projId":projId, "baseItemType":baseItemType, "jsonData":jsonData, "docBaseMasterKeyList":""};
-	if(apptempjsonId){
-		data["apptempjsonId"] = apptempjsonId;
+		return true;
 	}
-	console.log("toData: " + JSON.stringify(data))
-	myCommon.loading();
-	myCommon.ajaxPost({
-		urlV : apiBase + "/saveTempjson",
-		data: data,
-		successF : function(data) {
-			myCommon.closeLoading();
-			console.log("data: " + JSON.stringify(data));			
-		},
-		errorF : function() {
-			myCommon.closeLoading();
-			muiToast('保存信息失败');
-			return false
-		}
-	});
+	return false;
 }
-//中途保存信息获取
-function getTempjsonList(baseItemType,fn) {
-	var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "baseItemType":baseItemType};
-	myCommon.loading();
-	myCommon.ajaxGet({
-		urlV : apiBase + "/getTempjsonList?param="+JSON.stringify(param),
-		successF : function(data) {
-			myCommon.closeLoading();
-			if(data["code"] != "200") {
-				muiToast('获取列表信息失败');
-				return ;
-			}
-			console.log("data: " + JSON.stringify(data["data"]));
-			if(data["data"].length>0 && typeof fn =="function"){
-				fn(data["data"]);
-			}
-		},
-		errorF : function() {
-			myCommon.closeLoading();
-			muiToast('获取“新建列表”信息失败');
-		}
-	})
-}
-//生成中途返回列表
-function createNewList(data){	
-	var listData = "";
-	$.each(data, function(index,item) {
-		var jsonitem = JSON.parse(item["dataJson"]);
-		listData +='<li class="mui-table-view-cell towerli"><a apptempjsonId = '
-					+item["apptempjsonId"]+' formId = '+jsonitem["formId"]
-					+' class="mui-navigate-right"><div class = "tower_number">杆塔编码　<span>'
-					+jsonitem["tower_number"]+'</span><span>新建</span></div><div class = "sgjl">'
-					+jsonitem["sgjl"]+'</div><div class = "jcr">检查者　<span>'
-					+jsonitem["jcr"]+'</span></div><div class = "jcrq">检查日期　<span>'
-					+jsonitem["checkDate"]+'</span></div></a></li>';		
-						
-	});
-	$(".new").html(listData);
-	//去除列表中页面中的undefined
-	$(".new li a div span").each(function(index,item){
-		var self = $(item);
-		if(self.html() === "undefined"){
-			self.html("")
-		}
-	})
-	//跳转到对应列表继续输入
-	$(".new .towerli a").on("tap",function(){
-		var fId = null;
-		var formId = $(this).attr("formId");
-		$.each(sgjlData, function(index, item) {
-			if(item["formId"] == formId ) {
-				fId = item["id"];
-			}
-		});
-		var apptempjsonId = $(this).attr("apptempjsonId");		
-		var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId};
-		if(apptempjsonId) {
-			param["apptempjsonId"] = apptempjsonId;
-		}
-		var dumpurl = "sjjc-" + fId + "-1.html?param=" + JSON.stringify(param);
-		myCommon.loading();
-		window.location.href = dumpurl;							
-	})
-
-}
-////删除中途保存的数据 
-//function delTempjsonInfo (apptempjsonId) {
-//	var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "apptempjsonId":apptempjsonId};
-//	myCommon.loading();
-//	myCommon.ajaxGet({
-//		urlV : apiBase + "/delTempjsonInfo?param="+JSON.stringify(param),
-//		successF : function(data) {
-//			myCommon.closeLoading();
-//			if(data["code"] != "200") {
-//				muiToast('获取数据失败');
-//				return ;
-//			}
-//			console.log("data: " + JSON.stringify(data["data"]));
-//		},
-//		errorF : function() {
-//			myCommon.closeLoading();
-//			muiToast('获取数据失败');
-//		}
-//	})
-//}

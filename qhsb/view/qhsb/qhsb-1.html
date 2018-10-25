@@ -9,6 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
     <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.picker.min.css"/>
     <link rel="stylesheet" type="text/css" href="../../common/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="css/qhsb.css"/>
 </head>
@@ -19,11 +20,11 @@
 		<a class="mui-icon mui-pull-right" id="cacleBtn">取消</a>
 	</header>
 	<div id="main-body" class="mui-content">
-		<form id="qhsb" data-id="1" data-page="1" data-loop-id="-1" data-code="" class="mui-input-group" method="get" action="qhsb-2.html">
+		<form id="qhsb" data-id="1" data-page="1" data-loop-id="-1" data-code="qhsb" class="mui-input-group" method="get" action="qhsb-2.html">
 			<div class="mui-row form-title">塔杆编码</div>
 			<div class="mui-input-row form-select">
-				<input type="text" format="options" readonly="readonly" required="true" data-options='[]' name="text_tower_No" value="" placeholder="请选择" />
-                <input type="text" class="hide" name="tower_No" value="" />
+				<input type="text" format="options" readonly="readonly" required="true" data-options='[]' name="text_towerNo" value="" placeholder="请选择" />
+                <input type="text" class="hide" name="towerNo" value="" />
 				<span class="mui-icon mui-icon-forward"></span>
 			</div>
 			<div class="mui-row form-title">塔型</div>
@@ -54,6 +55,7 @@
 	</div>
     <script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
     <script type="text/javascript" src="../../plugins/mui/js/mui.min.js"></script>
+    <script src="../../plugins/mui/js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" src="../../common/js/common.js"></script>
     <script type="text/javascript" src="js/qhsb.js"></script>
 </body>
