@@ -242,12 +242,12 @@ $(document).ready(function() {
 				isPushed = true;
 				myCommon.closeLoading();
 				myCommon.myAlert("发布成功", "消息", ["确定"], function(){
-					transParam({"action": "refresh"});
+					//transParam({"action": "refresh"});
+					makeFormReadonly();
 				});
-			});
-			return false;
+			});			
 		}
-		
+		return false;
 	});
 	
 	$("#backBtn").on("tap", function() {				
@@ -409,22 +409,22 @@ function getCacheDate(){
 	return chk_data;
 }
 
-function setFormData(data){
-	$.each(data, function(name, value) {
-		if(value) {
-			var obj = $("input[name='"+name+"']");
-			if(obj) {
-				var name = obj.attr("name");
-				var type = obj.attr("type");
-				if(type == "radio") {
-					$("input[type='radio'][name='"+name+"'][value='"+value+"']").attr("checked", true);
-				}else{
-					obj.val(value);
-				}
-			}
-		}
-	});
-}
+//function setFormData(data){
+//	$.each(data, function(name, value) {
+//		if(value) {
+//			var obj = $("input[name='"+name+"']");
+//			if(obj) {
+//				var name = obj.attr("name");
+//				var type = obj.attr("type");
+//				if(type == "radio") {
+//					$("input[type='radio'][name='"+name+"'][value='"+value+"']").attr("checked", true);
+//				}else{
+//					obj.val(value);
+//				}
+//			}
+//		}
+//	});
+//}
 function makeFormReadonly(){
 	$("#btnStepPublish").attr("disabled", true);
 	$(".mui-input-row input, .mui-row input").attr("readonly", true);
@@ -450,20 +450,20 @@ function goodsoutReport(data, callback){
 		}
 	});
 }
-function loadCacheData() {
-	var chk_data = getCacheDate();
-	if(chk_data && chk_data[formPage]) {
-		// 塔杆编码不可覆盖
-		if($("input[name='text_tower_number']").length > 0 && $("input[name='text_tower_number']").val() != "") {
-			//清除掉塔杆编码
-			delete chk_data[formPage]["text_tower_number"];
-			delete chk_data[formPage]["tower_number"];
-		}
-		
-		if(loopIndex < 0) {
-			setFormData(chk_data[formPage]);
-		}
-		return true;
-	}
-	return false;
-}
+//function loadCacheData() {
+//	var chk_data = getCacheDate();
+//	if(chk_data && chk_data[formPage]) {
+//		// 塔杆编码不可覆盖
+//		if($("input[name='text_tower_number']").length > 0 && $("input[name='text_tower_number']").val() != "") {
+//			//清除掉塔杆编码
+//			delete chk_data[formPage]["text_tower_number"];
+//			delete chk_data[formPage]["tower_number"];
+//		}
+//		
+//		if(loopIndex < 0) {
+//			setFormData(chk_data[formPage]);
+//		}
+//		return true;
+//	}
+//	return false;
+//}
