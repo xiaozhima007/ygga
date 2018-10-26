@@ -3,6 +3,7 @@ var apiBase, userId, tokenId, jsonId ,projId= null;
 var formId, formNo, formPage;
 var loopIndex;
 var readonly = false;
+var isPushed = false;
 var cacheKey = "_data_qhsb";
 $(document).ready(function() {
 	// MUI框架初始化
@@ -226,41 +227,58 @@ $(document).ready(function() {
 	});
 	
 	$("#btnStepPublish").on("tap", function() {
-		var formData = getFormData(true);
-		if(!formData) {
-			return ;
-		}
-		formData["userId"] = userId;
-		formData["projId"] = projId;
-		formData["tokenId"] = tokenId;
-		console.info("formdata: ", JSON.stringify(formData));
-		goodsoutReport(formData, function(){		
-			myCommon.closeLoading();
-			myCommon.myAlert("发布成功", "消息", ["确定"], function(){
-				transParam({"action": "refresh"});
+		if(isPushed){
+			muiToast("请勿重复操作!")
+		}else{
+			var formData = getFormData(true);
+			if(!formData) {
+				return ;
+			}
+			formData["userId"] = userId;
+			formData["projId"] = projId;
+			formData["tokenId"] = tokenId;
+			console.info("formdata: ", JSON.stringify(formData));
+			goodsoutReport(formData, function(){
+				isPushed = true;
+				myCommon.closeLoading();
+				myCommon.myAlert("发布成功", "消息", ["确定"], function(){
+					transParam({"action": "refresh"});
+				});
 			});
-		});
-		return false;
+			return false;
+		}
+		
 	});
 	
 	$("#backBtn").on("tap", function() {				
 		if(formPage == "1") {
+			localStorage.removeItem(cacheKey);
 			transParam({"action": "close"});
 		} else {
+			getFormData(false,false);
 			transParam({"action": "back"});
 		}		
 	});
 	
-	$("#cacleBtn").on("tap", function() {	
-		mui.confirm('确定放弃本次缺货上报？','提示',['取消','确认'],function (e) {
+	$("#cacleBtn").on("tap", function() {
+		var mes = "";
+		if(!isPushed){
+			mes = "确定放弃本次缺货上报？"
+		}else{
+			mes = "确定返回工作台？"
+		}		
+		mui.confirm(mes,'提示',['取消','确认'],function (e) {
 			if(e.index){
 				myCommon.loading();
+				localStorage.removeItem(cacheKey);
 				transParam({"action": "close"});
 			}
 		},'div')
 	});
 });
-
+$("#qhsb").find("input").change(function(){
+	isPushed = false;
+})
 function inputFilter(text, regex){
 	if(text != ""){
 		while(true){
