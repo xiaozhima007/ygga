@@ -1,7 +1,7 @@
 ###Welcome to use MarkDown
 页面url:
 http://127.0.0.1/sjsc/view/sjsc/sjsc-1.html?param={"tokenId":"ffd9bc23d7a54065a6f6d77e69f1dc0d8","projId":"C7C9291BD1F75ACADE695971041A376F","userId":"5003","apiBase":"http://127.0.0.1/grm/ecpm.proj.hnsbd/AndroidService"}
-http://127.0.0.1/sjsc/view/sjsc/sjsc-record.html?param={"tokenId":"0d6af90c14b44941882a9b2b84b35a48","projId":"DA4B58AE931F99E6B052B0CE1011DDBA","userId":"5009",%22apiBase%22:%22http://127.0.0.1/grm/ecpm.proj.hnsbd/AndroidService%22}
+http://127.0.0.1/sjsc/view/sjsc/sjsc-4.html?param={"tokenId":"0d6af90c14b44941882a9b2b84b35a48","projId":"DA4B58AE931F99E6B052B0CE1011DDBA","userId":"5009",%22apiBase%22:%22http://127.0.0.1/grm/ecpm.proj.hnsbd/AndroidService%22}
 
 接口：getPayCheckBanzuList  三交三查获取班组列表信息   tokenId:tokenId:   {{"code":"200","data":[{"teanId":"班组id","teamName":"班组名称"}],"message":"获取数据成功！"}}
 

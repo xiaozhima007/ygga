@@ -1,16 +1,15 @@
-var timeTitle = document.getElementsByClassName("timeTitle")[0],
+var timeTitle = $(".timeTitle").get(0),
     date = new Date(),
     year = date.getFullYear(),
-	month = date.getMonth();
+	month = date.getMonth(),
 	day = date.getDate(),
 	week = date.getDay(),//得到当天星期 0-6
 	dayOfMonth = [31,28+isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],//定义每月具体天数
 	textOfMonth = ["一","二","三","四","五","六","七","八","九","十","十一","十二"],
 	firstDay = dayOfWeek(year,month,1),
 	len = Math.ceil((dayOfMonth[month] + firstDay) / 7),
-	today = year+"-"+(month+1)+"-"+day;
-var urlParam;
-var apiBase, userId, tokenId, jsonId, projId = null;
+	today = year+"-"+(month+1)+"-"+day,
+	urlParam,apiBase, userId, tokenId, projId, jsonId = null;
 	
 $(document).ready(function() {
 	mui.init();
@@ -31,7 +30,9 @@ $(document).ready(function() {
 		tokenId = urlParam["tokenId"];
 		projId = urlParam["projId"];
 	}
+	
 	init(); 
+	
 	//日历点击的事件委托
 		$("#calendar").on("tap",function(e){
 	    $("#calendar *").removeClass("ontap");
@@ -41,22 +42,22 @@ $(document).ready(function() {
 	    //把日历的头部的年月日分割成数组，这里保存在其value属性上
 	    var dayArr = timeTitle.getAttribute('value').split('-');
         //如果是上一月的点击
-            if ( target.id === "dirL" ) {
-			preMonth(dayArr[0]-0,dayArr[1]-1,dayArr[2]-0);
-        
-        	}else if ( target.id === "dirR" ) {
-            //如果是下一月的点击
-			nextMonth(dayArr[0]-0,dayArr[1]-1,dayArr[2]-0);
-        
-        	}else {
-	  			if($(target).hasClass("unread")){
-	  			var detaildate = target.getAttribute('value');//得到点击时间		
-	  		showUnreadDetail(detaildate);
-	  			}else{
-	  		$("#bzRecord ul").html("");
-	  		}
-	  			if($(target).parent().hasClass("conDate")){
-	  		$(target).addClass("ontap")	
+        if ( target.id === "dirL" ) {
+		preMonth(dayArr[0]-0,dayArr[1]-1,dayArr[2]-0);
+    
+    	}else if ( target.id === "dirR" ) {
+        //如果是下一月的点击
+		nextMonth(dayArr[0]-0,dayArr[1]-1,dayArr[2]-0);
+    
+    	}else {
+  			if($(target).hasClass("unread")){
+  				var detaildate = target.getAttribute('value');//得到点击时间		
+  				showUnreadDetail(detaildate);
+  			}else{
+  				$("#bzRecord ul").html("");
+  		}
+		if($(target).parent().hasClass("conDate")){
+			$(target).addClass("ontap")	
         }
 	}
 	}) 
@@ -101,37 +102,37 @@ function showUnread(){
 			urlV : apiBase + "/payCheckNotReadUser?param="+JSON.stringify(param),
 			successF : function(data) {
 				myCommon.closeLoading();
-					if(data["code"] != "200") {
-						muiToast('获取“未读班组列表”信息失败');
-							return ;
-					}
-					console.log("data: " + JSON.stringify(data)); 
-					$("#bzRecord ul").html("");
-					
-					if(data["data"].length > 0){
-						/*获取teamName值*/	            		
-						$.each(data["data"], function(index, item) { 
-							var unreadName = item["teamName"];	
-							var unreadDate =item["tsDate"];
-							/*未读标注*/
-							$(".conDate span").each(function(index1,item1){
+				if(data["code"] != "200") {
+					muiToast('获取“未读班组列表”信息失败');
+						return ;
+				}
+				console.log("data: " + JSON.stringify(data)); 
+				
+				$("#bzRecord ul").html("");//清空未读班组的值			
+				if(data["data"].length > 0){
+					/*获取teamName值*/	            		
+					$.each(data["data"], function(index, item) { 
+						var unreadName = item["teamName"];	
+						var unreadDate =item["tsDate"];
+						/*未读标注*/
+						$(".conDate span").each(function(index1,item1){
 							var val = addzero($(item1).attr("value"));						
-									if(val == unreadDate){
-									$(item1).addClass("unread");
-								}
-							})					
-							/*生成今日未读班组*/
-							if(unreadDate == addzero(today)){
-								$("#bzRecord ul").append('<li class="mui-table-view-cell">'+unreadName+'</li>');											
-							} 																	
-						});							
-					}else{
-						$(".conDate span").each(function(index,item){
-							if($(item).hasClass("unread")){
-								$(item).removeClass("unread");						
+							if(val == unreadDate){
+								$(item1).addClass("unread");
 							}
-						})
-					}
+						})					
+						/*生成今日未读班组*/
+						if(unreadDate == addzero(today)){
+							$("#bzRecord ul").append('<li class="mui-table-view-cell">'+unreadName+'</li>');											
+						}															
+					});							
+				}else {
+					$(".conDate span").each(function(index,item){
+						if($(item).hasClass("unread")){
+							$(item).removeClass("unread");						
+						}
+					})
+				} 		
 			}, 
 			errorF : function() {
 						myCommon.closeLoading();
@@ -252,10 +253,8 @@ function showDate(year,month,day) {
     timeTitle.innerHTML = date; //日历头部显示
     timeTitle.setAttribute("value",year+"-"+(month+1)+"-"+day);
     createDate(year,month,firstDay);//生成日期执行//调用日历显示函数
-    if(month == new Date().getMonth()&&year ==new Date().getFullYear()){
-    	showtoday()
-    }   
-		showUnread();
+    if(month == new Date().getMonth()&&year ==new Date().getFullYear()){showtoday()}   
+	showUnread();
 }
 
 function addzero(str){

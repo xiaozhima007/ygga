@@ -1,12 +1,13 @@
-var apiBase, userId, tokenId, jsonId ,projId,xqDate= null,
+var apiBase, userId, tokenId, projId, jsonId = null,
+	xqDate= null,
 	listUrl = "sjsc-2.html",
 	recordUrl = "sjsc-3.html",
 	detailUrl = "sjsc-4.html",
 	format = $("form").attr("format"),
-	data = [];
-var oDate = new Date();
-var timemark = new Date(oDate.getFullYear(),oDate.getMonth(),oDate.getDate()).getTime();
-var time_start = null;
+	data = [],
+	time_start = null,
+    oDate = new Date(),
+	timemark = new Date(oDate.getFullYear(),oDate.getMonth(),oDate.getDate()).getTime();
 $(document).ready(function() {
 	/*MUI初始化*/ 
 	mui.init();
@@ -38,7 +39,7 @@ $(document).ready(function() {
 	
 	//下一步按钮功能实现
 	$("#btnStepNext").off("tap").on("tap",function(){
-		var isComplete = true;
+		var isCompleted = true;
 		//保存当前数据
 		var dataList = getFormData(false);
 		console.log(JSON.stringify(dataList))
@@ -46,7 +47,7 @@ $(document).ready(function() {
 		$.each(dataList,function(index,item){
 			$.each(item,function(key,value){
 				if($.trim(value) == ""){
-					isComplete = false;
+					isCompleted = false;
 					muiToast("当前表单未填写完整，请检查！")
 					return ;
 				}
@@ -54,7 +55,7 @@ $(document).ready(function() {
 			return ;
 		})
 		//页面跳转
-		if(isComplete){
+		if(isCompleted){
 			var nextUrl = listUrl; 
 			var param = {"tokenId":tokenId,"userId":userId, "projId":projId, "apiBase": apiBase}
 			nextUrl += "?param=" + JSON.stringify(param);

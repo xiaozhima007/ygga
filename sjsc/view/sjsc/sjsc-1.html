@@ -87,6 +87,8 @@
 							</div>
 						</li>
 				</ul>
+				
+				
 				<div class = "white-space"></div>
 				<button type="button" class="mui-btn mui-btn-block" id = "btnStepNext">下一步</button>
 			</form>		
@@ -109,31 +111,33 @@
 				textArea.on('keyup mousedown mouseup focus blur',function(){
 					cglHeight();
 				});
-			});				
-			//语音输入模块
-			// 监听plusready事件  
-			//mui.plusReady(function() {				
-				document.addEventListener("plusready", function(){
-					$(".voiceIcon").on("tap",function(){
-						var voiceT = $(this).next("span")[0];//获取时间显示节点
-						if(!$(voiceT).hasClass("onListen") && time_start==null){
-							this.src = "img/voice2.png";
-							$(voiceT).addClass("onListen").html("00:00:00");
-							time_start = time_fun(voiceT);//启动定时器
-							startRecognize(voiceT);												
-						}else{
-							this.src = "img/voice1.png";
-							$(voiceT).removeClass("onListen");
-							clearInterval(time_start);
-							time_start = null;
-							stopRecognize();											
-							$(this).parent().prev().children(".textarea").append(text);
-						}								
-					})
-						startRecognize(obj)
-				}, false );
-				var text=null,time_start = null;						
-				
+				//语音输入模块
+				var resultText = "",time_start = null;					
+				$(".voiceIcon").on("tap",function(){
+					var voiceT = $(this).next("span")[0];//获取时间显示节点
+					if(!$(voiceT).hasClass("onListen") && time_start==null){
+						this.src = "img/voice2.png";
+						$(voiceT).addClass("onListen").html("00:00:00");
+						time_start = time_fun(voiceT);//启动定时器	
+						//newRecognition();
+						//alert(resultText);
+						//$(this).parent().prev().children(".textarea").append(resultText);
+						$(this).parent().prev().children(".textarea").append("测试文字")
+						
+					}else{
+						this.src = "img/voice1.png";
+						$(voiceT).removeClass("onListen");
+						clearInterval(time_start);
+						time_start = null;
+											
+					}								
+				})
+											
+					//调用原生的方法
+				function newRecognition() {
+					hnsbd.jsCallAndroid();
+				}
+								
 				function time_fun(obj) {
 					var sec=0;
 					return setInterval(function () {
@@ -147,29 +151,12 @@
 				function two_char(n) {
 					return n >= 10 ? n : "0" + n;        
 				}  
-				 function startRecognize(obj) {
-					if(plus.os.name=='Android'&&navigator.userAgent.indexOf('StreamApp')>0){
-						plus.nativeUI.toast('当前环境暂不支持语音识别插件');
-						return;
-					}
-					if(plus.os.name=='Android') {
-						var options = {};
-						options.engine = 'iFly';
-						options.punctuation = false;    // 是否需要标点符号 
-						obj.textContent = "";
-						console.log( "开始语音识别：" );
-						plus.speech.startRecognize( options, function ( s ) {
-							console.log( s );
-							obj.textContent += s;
-						}, function ( e ) {
-							console.log( "语音识别失败："+e.message );
-						} );
-					}
-				 }
-				 function stopRecognize(){
-					plus.speech.stopRecognize();
-				 }
-			//});
+			});
+			
+			//接受解析语音的方法
+			function showResult(str){
+				resultText += str;
+			}
 		</script>
 	</body>
 </html>
