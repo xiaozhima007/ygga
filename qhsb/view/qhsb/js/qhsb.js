@@ -358,10 +358,10 @@ function getFormData(isPublish, requiredBreak){
 					requiredCheck = false;
 				}
 			}
-			//清除这个空值
-			if(fdata[name] == "") {
-				delete fdata[name];
-			}
+//			//清除这个空值
+//			if(fdata[name] == "") {
+//				delete fdata[name];
+//			}
 		}
 	});	
 	console.log(JSON.stringify(fdata));
