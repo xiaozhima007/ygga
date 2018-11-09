@@ -39,34 +39,33 @@ $(document).ready(function() {
 		if(urlParam["jsonId"]) {
 			// 获取已存储数据
 			jsonId = urlParam["jsonId"];
-			//readonly = true;
+			readonly = true;
 			getConstructionListDetail(urlParam["jsonId"]);
-			//makeFormReadonly();
-     	}
-//	    else if(urlParam["apptempjsonId"]) {
-//			// 获取已存储数据
-//			apptempjsonId = urlParam["apptempjsonId"];
-//			var resdata = null;
-//			getTempjsonList(formIdArr,function(data){
-//				$.each(data, function(index,item) {
-//					if(apptempjsonId == item["apptempjsonId"]){
-//						resdata = item;
-//					}
-//				});
-//				resdata = JSON.parse(resdata["dataJson"]);
-//				setFormData(resdata);
-//			});
-//		}		
+			makeFormReadonly();
+		}else if(urlParam["apptempjsonId"]) {
+			// 获取已存储数据
+			apptempjsonId = urlParam["apptempjsonId"];
+			var resdata = null;
+			getTempjsonList(formIdArr,function(data){
+				$.each(data, function(index,item) {
+					if(apptempjsonId == item["apptempjsonId"]){
+						resdata = item;
+					}
+				});
+				resdata = JSON.parse(resdata["dataJson"]);
+				setFormData(resdata);
+			});
+		}		
 	} 
-//	if(!apiBase || !userId || !tokenId) {
-//		myCommon.myAlert("页面传入参数错误", "提示", ["确定"]);
-//		return ;
-//	}
+	if(!apiBase || !userId || !tokenId) {
+		myCommon.myAlert("页面传入参数错误", "提示", ["确定"]);
+		return ;
+	}
 	if(readonly ==false && $("input[name = search]").length > 0){
 		getConstructionList();
-//		getTempjsonList(formIdArr,function(data){
-//			createNewList(data)
-//		});
+		getTempjsonList(formIdArr,function(data){
+			createNewList(data)
+		});
 		//下拉刷新
 		var idv = $("#downrefresh");
 		myCommon.dropload(idv,function(){			
@@ -75,7 +74,6 @@ $(document).ready(function() {
 	}
 	//跳转到新建页面
 	$(".createNew").on("tap", function() {
-		window.localStorage.removeItem(cacheKey);
 		var nexturl = $(this).attr("hrefData");
 		if(!nexturl)
 		{
@@ -145,9 +143,7 @@ $(document).ready(function() {
 				}
 			});
 			
-		}else{
-			loadCacheData();
-		}
+		} 
     }
 	
 	//施工列表获取
@@ -191,25 +187,25 @@ $(document).ready(function() {
 	{
 		$("form input[type='text']").off("tap").on("input propertychange", function() {
 			var self = $(this);
-			//self.val() != "" && setEmptyInputRed(self, "remove");
+			self.val() != "" && setEmptyInputRed(self, "remove");
 		});
 		
 		// 限制文本输入框内容
 		$("form input[type='decimal']").off("tap").on("input propertychange", function() {
 			var self = $(this);
-			//self.val() != "" && setEmptyInputRed(self, "remove");
+			self.val() != "" && setEmptyInputRed(self, "remove");
 			self.val(inputFilter(self.val(), /^(\-)?(\d{1,16}(\.\d{0,2})?)?$/));
 		});
 		
 		$("form input[type='uint']").off("tap").on("input propertychange", function() {
 			var self = $(this);
-			//self.val() != "" && setEmptyInputRed(self, "remove");
+			self.val() != "" && setEmptyInputRed(self, "remove");
 			self.val(inputFilter(self.val(), /^\d{1,10}$/));
 		});
 		
 		$("form input[type='int']").off("tap").on("input propertychange", function() {
 			var self = $(this);
-			//self.val() != "" && setEmptyInputRed(self, "remove");
+			self.val() != "" && setEmptyInputRed(self, "remove");
 			self.val(inputFilter(self.val(), /^\-?\d{0,10}$/));
 		});
 		
@@ -219,7 +215,7 @@ $(document).ready(function() {
 			datePicker = datePicker || new mui.DtPicker({"type":"date","beginYear":2000} ); 
 			var self = $(this);
 			datePicker.show(function (selectItems) {
-				//setEmptyInputRed(self, "remove");
+				setEmptyInputRed(self, "remove");
 				var dateVal = selectItems.y.value + "-" + selectItems.m.value + "-" + selectItems.d.value;
 				console.log("date: " + dateVal);
 				self.val(dateVal);
@@ -230,7 +226,7 @@ $(document).ready(function() {
 			timePicker = timePicker || new mui.DtPicker({"type":"time"} );
 			var self = $(this);
 			timePicker.show(function (selectItems) {
-				//setEmptyInputRed(self, "remove");
+				setEmptyInputRed(self, "remove");
 				var timeVal = selectItems.h.value + ":" + selectItems.i.value + ":00";
 				console.log("time: " + timeVal);
 				self.val(timeVal);
@@ -266,7 +262,7 @@ $(document).ready(function() {
 			var picker = new mui.PopPicker();
 			picker.setData(itemLists);
 			picker.show(function(selectedItem) {
-				//setEmptyInputRed(self, "remove");
+				setEmptyInputRed(self, "remove");
 				var realName = self.attr("name").substr(5);
 				var selectVal = selectedItem[0]['value'];
 				var selectText = selectedItem[0]['text'];
@@ -300,13 +296,15 @@ $(document).ready(function() {
 			}
 		}
 		
+		//var towerNumber = $("input[name=tower_number]").val();
+		//var param = {"towerNumber":towerNumber};
 		var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase,"projId":projId};
 		if(jsonId) {
 			param["jsonId"] = jsonId;
 		}
-//		if(apptempjsonId) {
-//			param["apptempjsonId"] = apptempjsonId;
-//		}
+		if(apptempjsonId) {
+			param["apptempjsonId"] = apptempjsonId;
+		}
 		nexturl += "?param=" + JSON.stringify(param);
 		myCommon.loading();
 		window.location.href = nexturl;
@@ -321,43 +319,33 @@ $(document).ready(function() {
 		saveConstructionList(formData, function(){		
 			myCommon.closeLoading();
 			myCommon.myAlert("发布成功", "消息", ["确定"], function(){
-				window.localStorage.removeItem(cacheKey);
 				var nexturl = "sjjc-towerList.html";				
 				var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase,"projId":projId};
 				nexturl += "?param=" + JSON.stringify(param);		
 				window.location.href = nexturl;
 			});
 		});
+		return false;
 	});
 	
-//	$("#backBtn").on("tap", function() {				
-//		if(formPage == "0") {
-//			transParam({"action": "close"});
-//		} else {
-//			if(readonly == false){
-//				// 保存当前表单信息
-//				getFormData();
-//				var chk_data = getCacheDate();
-//				var fdata = {};
-//				$.each(chk_data, function(page, item) {
-//					$.each(item, function(key, value) {
-//						if(value != "") {
-//							fdata[key] = value;
-//						}
-//					});
-//				});					
-//				//saveTempjson(formId ,fdata);		
-//			}
-//			transParam({"action": "back"});
-//		}		
-//	});
-$("#backBtn").on("tap", function() {				
+	$("#backBtn").on("tap", function() {				
 		if(formPage == "0") {
 			transParam({"action": "close"});
 		} else {
 			if(readonly == false){
 				// 保存当前表单信息
-				getFormData();
+				getFormData(false, false);
+				var chk_data = getCacheDate();
+				var fdata = {};
+				$.each(chk_data, function(page, item) {
+					$.each(item, function(key, value) {
+						if(value != "") {
+							fdata[key] = value;
+						}
+					});
+				});
+					
+				saveTempjson(formId ,fdata);		
 			}
 			transParam({"action": "back"});
 		}		
@@ -407,8 +395,41 @@ function inputFilter(text, regex)
 	return text;
 }
 
+
+function setEmptyInputRed(object, action) {
+	
+	var target = null;
+	if(object.parent().prev().hasClass("form-sub-title")
+		|| object.parent().prev().hasClass("form-title")) {
+		target = object.parent().prev();
+	} else if(object.parent().parent().parent().hasClass("form-grid")
+		|| object.parent().parent().parent().parent().hasClass("form-grid")) {
+		if(object.prev().is("label")) {
+			target = object.prev();
+		}else if(object.parent().parent().prev().find("label").length > 0) {
+			target = object.parent().parent().prev().find("label");
+		}else if(object.parent().parent().prev().hasClass("form-left-label")) {
+			target = object.parent().parent().prev();
+		}else if(object.parent().parent().prev().find(".form-left-label").length > 0) {
+			target = object.parent().parent().prev().find(".form-left-label");
+		}
+	}
+	if(target) {
+		if(action == "add") {
+			if(! target.hasClass("red")) {
+				target.addClass("red");
+			}
+		}else{
+			target.removeClass("red");
+		}
+	}
+}
+
 function getFormData(isPublish, requiredBreak){
 	if(typeof(isPublish) == "undefined"){ isPublish = false; }
+	if(typeof(requiredBreak) == "undefined") { requiredBreak = true; }	
+	var requiredCheck = true;
+	var requiredScroll = false; //是否需滚动
 	var fdata = {};
 	$(".mui-input-row input, .mui-row input").each(function(index, item) {
 		var self = $(item);
@@ -419,6 +440,25 @@ function getFormData(isPublish, requiredBreak){
 				fdata[name] = $("input[type='radio'][name='"+name+"']:checked").val();
 			}else{
 				fdata[name] = self.val();
+				var required = self.attr("required");
+				// 必填项提示
+				if(required == "true" && fdata[name] == "" && requiredBreak == true) {
+					//var dformat = self.attr("format")
+					//if(dformat == "options" || dformat == "date" || dformat == "time" || dformat == "datetime") {
+					if(requiredScroll == false) {
+						requiredScroll = true;
+						var vtop = self.offset().top - 100;
+						if(vtop < 0) {
+							vtop = 0;
+						}
+						//console.log("scroll to: " + vtop)
+						mui.scrollTo(vtop, 200);
+						// 查找输入框的标题label
+						self.trigger('focus');//触发事件
+						setEmptyInputRed(self, "add");
+					}
+					requiredCheck = false;
+				}
 			}
 			//清除这个空值
 			if(fdata[name] == "") {
@@ -427,25 +467,29 @@ function getFormData(isPublish, requiredBreak){
 		}
 	});	
 	console.log(JSON.stringify(fdata));
-	
-	var chk_data = getCacheDate();
-	if(isPublish){
-		//console.log("cookie data: " + JSON.stringify(chk_data));			
-		// 混合当前表单和COOKIE数据
-		$.each(chk_data, function(page, item) {
-			$.each(item, function(key, value) {
-				if(value != "") {
-					fdata[key] = value;
-				}
+		
+	if(requiredCheck || requiredBreak == false) {
+		var chk_data = getCacheDate();
+		if(isPublish){
+			//console.log("cookie data: " + JSON.stringify(chk_data));			
+			// 混合当前表单和COOKIE数据
+			$.each(chk_data, function(page, item) {
+				$.each(item, function(key, value) {
+					if(value != "") {
+						fdata[key] = value;
+					}
+				});
 			});
-		});
-		return fdata;			
+			return fdata;			
+		} else {
+			// 判断操作，下一步保存数据
+			chk_data[formPage] = fdata; 
+			chk_data["1"]["formId"] = formId;
+			window.localStorage.setItem(cacheKey, JSON.stringify(chk_data));
+			return true;
+		}
 	} else {
-		// 判断操作，下一步保存数据
-		chk_data[formPage] = fdata; 
-		chk_data["1"]["formId"] = formId;
-		window.localStorage.setItem(cacheKey, JSON.stringify(chk_data));
-		return true;
+		return null;
 	}
 }
 
@@ -468,7 +512,27 @@ function getCacheDate()
 	return chk_data;
 }
 
-function setFormData(data,isPushed)
+//function loadCacheData() {
+//	var chk_data = getCacheDate();
+//	if(chk_data && chk_data[formPage]) {
+//		// 塔杆编码不可覆盖
+//		if($("input[name='text_tower_number']").length > 0 && $("input[name='text_tower_number']").val() != "") {
+//			//清除掉塔杆编码
+//			delete chk_data[formPage]["text_tower_number"];
+//			delete chk_data[formPage]["tower_number"];
+//		}
+//		
+//		if(loopIndex < 0) {
+//			setFormData(chk_data[formPage]);
+//		}else if(chk_data[formPage]["_s_data"] && chk_data[formPage]["_s_data"][loopIndex]) {
+//			setFormData(chk_data[formPage]["_s_data"][loopIndex]);
+//		}
+//		return true;
+//	}
+//	return false;
+//}
+
+function setFormData(data)
 {
 	$.each(data, function(name, value) {
 		if(value) {
@@ -481,24 +545,17 @@ function setFormData(data,isPushed)
 				}else{
 					obj.val(value);
 				}
-				if(isPushed)
-				obj.attr("disabled",true)
 			}
 		}
 	});
-} 
-function loadCacheData() {
-	var chk_data = getCacheDate();
-	if(chk_data && chk_data[formPage]) {
-		// 塔杆编码不可覆盖
-		if($("input[name='text_tower_number']").length > 0 && $("input[name='text_tower_number']").val() != "") {
-			//清除掉塔杆编码
-			delete chk_data[formPage]["text_tower_number"];
-			delete chk_data[formPage]["tower_number"];
-		}				
-		setFormData(chk_data[formPage]);		
-	}
 }
+
+function makeFormReadonly()
+{
+	$("#btnStepPublish").attr("disabled", true);
+	$(".mui-input-row input, .mui-row input").attr("readonly", true);
+}
+
 function pageDumpByFormType(typeName)
 {
 	var fId = null;
@@ -550,9 +607,9 @@ function getRecordByTwoerNumber(towerNumber)
 // 保存数据
 function saveConstructionList(data, callback){
 	data["formId"] = formId;
-	var data = {"userId":userId, "tokenId":tokenId, "data": data,"projId":projId};
-	if(jsonId){
-		data["jsonId"] = jsonId;
+	var data = {"userId":userId, "tokenId":tokenId, "data": data,"projId":projId, "apptempjsonId":""};
+	if(apptempjsonId){
+		data["apptempjsonId"] = apptempjsonId;
 	}
 	myCommon.loading();
 	myCommon.ajaxPost({
@@ -600,7 +657,6 @@ function getConstructionList(){
 				$("#towerComplete").html(listData);				
 				//跳转到详情
 				$("#towerComplete .towerli a").on("tap",function(){
-					window.localStorage.removeItem(cacheKey);
 					var fId = null;
 					var formId = $(this).attr("formId");
 					$.each(sgjlData, function(index, item) {
@@ -642,9 +698,15 @@ function getConstructionListDetail(jsonId)
 			if(typeof(data["data"]) == "string"){
 				data["data"] = JSON.parse(data["data"]);
 			}
-			
-			setFormData(data["data"],true);
-			
+			if(loopIndex < 0){
+				setFormData(data["data"]);
+			}else{
+				setFormData(data["data"]["_s_data"][loopIndex]);
+				//下一步是否可用
+				if(loopIndex == data["data"]["_s_data"].length - 1) {
+					$("#btnStepNext").attr("disabled", true);
+				}
+			}
 		},
 		errorF : function() {
 			myCommon.closeLoading();
@@ -652,3 +714,110 @@ function getConstructionListDetail(jsonId)
 		}
 	});
 }
+//中途保存
+function saveTempjson(baseItemType,jsonData) {
+	var data = {"tokenId":tokenId, "userId":userId, "projId":projId, "baseItemType":baseItemType, "jsonData":jsonData, "docBaseMasterKeyList":""};
+	if(apptempjsonId){
+		data["apptempjsonId"] = apptempjsonId;
+	}
+	console.log("toData: " + JSON.stringify(data))
+	myCommon.loading();
+	myCommon.ajaxPost({
+		urlV : apiBase + "/saveTempjson",
+		data: data,
+		successF : function(data) {
+			myCommon.closeLoading();
+			console.log("data: " + JSON.stringify(data));			
+		},
+		errorF : function() {
+			myCommon.closeLoading();
+			muiToast('保存信息失败');
+			return false
+		}
+	});
+}
+//中途保存信息获取
+function getTempjsonList(baseItemType,fn) {
+	var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "baseItemType":baseItemType};
+	myCommon.loading();
+	myCommon.ajaxGet({
+		urlV : apiBase + "/getTempjsonList?param="+JSON.stringify(param),
+		successF : function(data) {
+			myCommon.closeLoading();
+			if(data["code"] != "200") {
+				muiToast('获取列表信息失败');
+				return ;
+			}
+			console.log("data: " + JSON.stringify(data["data"]));
+			if(data["data"].length>0 && typeof fn =="function"){
+				fn(data["data"]);
+			}
+		},
+		errorF : function() {
+			myCommon.closeLoading();
+			muiToast('获取“新建列表”信息失败');
+		}
+	})
+}
+//生成中途返回列表
+function createNewList(data){	
+	var listData = "";
+	$.each(data, function(index,item) {
+		var jsonitem = JSON.parse(item["dataJson"]);
+		listData +='<li class="mui-table-view-cell towerli"><a apptempjsonId = '
+					+item["apptempjsonId"]+' formId = '+jsonitem["formId"]
+					+' class="mui-navigate-right"><div class = "tower_number">杆塔编码　<span>'
+					+jsonitem["tower_number"]+'</span><span>新建</span></div><div class = "sgjl">'
+					+jsonitem["sgjl"]+'</div><div class = "jcr">检查者　<span>'
+					+jsonitem["jcr"]+'</span></div><div class = "jcrq">检查日期　<span>'
+					+jsonitem["checkDate"]+'</span></div></a></li>';		
+						
+	});
+	$(".new").html(listData);
+	//去除列表中页面中的undefined
+	$(".new li a div span").each(function(index,item){
+		var self = $(item);
+		if(self.html() === "undefined"){
+			self.html("")
+		}
+	})
+	//跳转到对应列表继续输入
+	$(".new .towerli a").on("tap",function(){
+		var fId = null;
+		var formId = $(this).attr("formId");
+		$.each(sgjlData, function(index, item) {
+			if(item["formId"] == formId ) {
+				fId = item["id"];
+			}
+		});
+		var apptempjsonId = $(this).attr("apptempjsonId");		
+		var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId};
+		if(apptempjsonId) {
+			param["apptempjsonId"] = apptempjsonId;
+		}
+		var dumpurl = "sjjc-" + fId + "-1.html?param=" + JSON.stringify(param);
+		myCommon.loading();
+		window.location.href = dumpurl;							
+	})
+
+}
+////删除中途保存的数据 
+//function delTempjsonInfo (apptempjsonId) {
+//	var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "apptempjsonId":apptempjsonId};
+//	myCommon.loading();
+//	myCommon.ajaxGet({
+//		urlV : apiBase + "/delTempjsonInfo?param="+JSON.stringify(param),
+//		successF : function(data) {
+//			myCommon.closeLoading();
+//			if(data["code"] != "200") {
+//				muiToast('获取数据失败');
+//				return ;
+//			}
+//			console.log("data: " + JSON.stringify(data["data"]));
+//		},
+//		errorF : function() {
+//			myCommon.closeLoading();
+//			muiToast('获取数据失败');
+//		}
+//	})
+//}

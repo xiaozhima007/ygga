@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>普通基础分坑</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/form.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left" id="backBtn">
+			<span>上一步</span>
+		</a>
+		<h1 class="mui-title">基础施工</h1>
+	</header>
+	<div id="main-body" class="mui-content">
+		<form id="formTower" data-id="7" data-page="2" data-loop-id="-1" data-code="JCJL_FKKW" class="mui-input-group" method="get" action="">
+			<div class="mui-row form-title">转角塔角度</div>
+			<div class="mui-row form-input">
+				<div class="mui-col-sm-6 mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>左转</label>
+						<input type="radio" name="zjtjd" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-6 mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>右转</label>
+						<input type="radio" name="zjtjd" value="2" />
+					</div>
+				</div>
+			</div>
+                <div class="mui-row form-grid form-item-padding top-line">
+                    <div class="mui-col-sm-4 mui-col-xs-4">
+                        <div class="mui-input-row">
+                            <label>度</label>
+                            <input type="uint" maxlength="10" required="true" name="zjtjd_d" value="" />
+                        </div>
+                    </div>
+                    <div class="mui-col-sm-4 mui-col-xs-4">
+                        <div class="mui-input-row">
+                            <label>分</label>
+                            <input type="uint" maxlength="10" required="true" name="zjtjd_f" value="" />
+                        </div>
+                    </div>
+                    <div class="mui-col-sm-4 mui-col-xs-4">
+                        <div class="mui-input-row">
+                            <label>秒</label>
+                            <input type="uint" maxlength="10" required="true" name="zjtjd_m" value="" />
+                        </div>
+                    </div>
+			    </div>
+			<div class="mui-row form-title">直线塔柱位置</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="zxtwz" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">基坑根开及对角线尺寸mm</div>
+            <div class="mui-row form-grid">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>AB</label>
+							<input type="decimal" maxlength="16" required="true" name="jcgk_ab" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>BC</label>
+							<input type="decimal" maxlength="16" required="true" name="jcgk_bc" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>CD</label>
+							<input type="decimal" maxlength="16" required="true" name="jcgk_cd" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>DA</label>
+							<input type="decimal" maxlength="16" required="true" name="jcgk_da" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>AC</label>
+							<input type="decimal" maxlength="16" required="true" name="jcgk_ac" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>BD</label>
+							<input type="decimal" maxlength="16" required="true" name="jcgk_bd" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+			<div class="mui-row form-line"></div>
+            <div class="mui-row form-grid">
+                <div class="mui-col-sm-4 mui-col-xs-4 form-sub-title">基础坑深mm</div>
+                <div class="mui-col-sm-8 mui-col-xs-8">
+                    <div class="mui-input-row">
+                        <label>A</label>
+                        <input type="decimal" maxlength="16" required="true" name="jcks_a" value="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>B</label>
+                        <input type="decimal" maxlength="16" required="true" name="jcks_b" value="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>C</label>
+                        <input type="decimal" maxlength="16" required="true" name="jcks_c" value="" />
+                    </div>
+                    <div class="mui-input-row">
+                        <label>D</label>
+                        <input type="decimal" maxlength="16" required="true" name="jcks_d" value="" />
+                    </div>
+                </div>
+            </div>
+			<div class="mui-row form-title">基础坑底断面尺寸mm</div>
+            <div class="mui-row form-grid">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                			<label>A</label>
+							<input type="decimal" maxlength="16" required="true" name="kddmcc_a1" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-1 mui-col-xs-1 form-operator">
+					    <span>*</span>
+				    </div>
+					<div class="mui-col-sm-5 mui-col-xs-5">
+						<div class="mui-input-row">
+							<input type="decimal" maxlength="16" required="true" name="kddmcc_a2" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                			<label>B</label>
+							<input type="decimal" maxlength="16" required="true" name="kddmcc_b1" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-1 mui-col-xs-1 form-operator">
+					    <span>*</span>
+				    </div>
+					<div class="mui-col-sm-5 mui-col-xs-5">
+						<div class="mui-input-row">
+							<input type="decimal" maxlength="16" required="true" name="kddmcc_b2" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                			<label>C</label>
+							<input type="decimal" maxlength="16" required="true" name="kddmcc_c1" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-1 mui-col-xs-1 form-operator">
+					    <span>*</span>
+				    </div>
+					<div class="mui-col-sm-5 mui-col-xs-5">
+						<div class="mui-input-row">
+							<input type="decimal" maxlength="16" required="true" name="kddmcc_c2" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                			<label>D</label>
+							<input type="decimal" maxlength="16" required="true" name="kddmcc_d1" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-1 mui-col-xs-1 form-operator">
+					    <span>*</span>
+				    </div>
+					<div class="mui-col-sm-5 mui-col-xs-5">
+						<div class="mui-input-row">
+							<input type="decimal" maxlength="16" required="true" name="kddmcc_d2" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+			<div class="mui-row form-title">垫层底板</div>
+            <div class="mui-row form-grid">
+				<div class="mui-row form-item-padding">
+                <div class="mui-col-sm-3 mui-col-xs-3 form-left-label">断面尺寸</div>
+					<div class="mui-col-sm-4 mui-col-xs-4">
+						<div class="mui-input-row">
+							<input type="decimal" maxlength="16" required="true" name="dcdb_l" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-1 mui-col-xs-1 form-operator">
+					    <span>*</span>
+				    </div>
+					<div class="mui-col-sm-4 mui-col-xs-4">
+						<div class="mui-input-row">
+							<input type="decimal" maxlength="16" required="true" name="dcdb_w" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+                <div class="mui-col-sm-3 mui-col-xs-3 form-left-label">垫层厚度</div>
+					<div class="mui-col-sm-4 mui-col-xs-4">
+						<div class="mui-input-row">
+							<input type="decimal" maxlength="16" required="true" name="dchd" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+			<div class="mui-button-row">
+				<button type="button" data-loading-text="发布" class="mui-btn" id="btnStepPublish">发布</button>
+			</div>
+		</form>
+	</div>
+    <script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="../../plugins/mui/js/mui.min.js"></script>
+	<script type="text/javascript" src="../../plugins/mui/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../common/js/common.js"></script>
+    <script type="text/javascript" src="js/form.js"></script>
+</body>
+</html>

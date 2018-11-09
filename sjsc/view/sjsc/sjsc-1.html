@@ -112,17 +112,18 @@
 					cglHeight();
 				});
 				//语音输入模块
-				var resultText = "",time_start = null;					
+				var resultText = "",time_start = null;
+				
 				$(".voiceIcon").on("tap",function(){
 					var voiceT = $(this).next("span")[0];//获取时间显示节点
 					if(!$(voiceT).hasClass("onListen") && time_start==null){
 						this.src = "img/voice2.png";
 						$(voiceT).addClass("onListen").html("00:00:00");
+						pointer = $(this).parent().prev().children(".textarea").get(0);
 						time_start = time_fun(voiceT);//启动定时器	
-						//newRecognition();
+						newRecognition();
 						//alert(resultText);
 						//$(this).parent().prev().children(".textarea").append(resultText);
-						$(this).parent().prev().children(".textarea").append("测试文字")
 						
 					}else{
 						this.src = "img/voice1.png";
@@ -152,10 +153,15 @@
 					return n >= 10 ? n : "0" + n;        
 				}  
 			});
-			
+			var pointer = null;//存储this指向 
 			//接受解析语音的方法
 			function showResult(str){
-				resultText += str;
+				resultText = str;
+				if(resultText){					
+					pointer.innerText += resultText;
+				}else{
+					alert("没有检测到结果，请重新录入！")
+				}
 			}
 		</script>
 	</body>

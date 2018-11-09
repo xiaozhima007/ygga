@@ -34,8 +34,7 @@ $(document).ready(function() {
 	init(); 
 	
 	//日历点击的事件委托
-		$("#calendar").on("tap",function(e){
-	    $("#calendar *").removeClass("ontap");
+		$("#calendar").on("tap",function(e){	    
 	    var e = e || window.event;
 	    var target = e.srcElement || e.target;
 	//console.log(target)
@@ -49,26 +48,28 @@ $(document).ready(function() {
         //如果是下一月的点击
 		nextMonth(dayArr[0]-0,dayArr[1]-1,dayArr[2]-0);
     
-    	}else {
+    	}else if($(target).parent().hasClass("conDate")){
+    		$(".conDate *").removeClass("ontap");
   			if($(target).hasClass("unread")){
   				var detaildate = target.getAttribute('value');//得到点击时间		
   				showUnreadDetail(detaildate);
   			}else{
   				$("#bzRecord ul").html("");
-  		}
-		if($(target).parent().hasClass("conDate")){
-			$(target).addClass("ontap")	
-        }
-	}
+  			}		
+			$(target).addClass("ontap")	       
+		}
+    	else{
+    		//跳转到详情页		
+			$(".tsxq li").on("tap",function(){
+				var nextUrl = "sjsc-4.html";
+				var date = datailTime();
+				var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "date":date, "apiBase":apiBase};
+				nextUrl += "?param=" + JSON.stringify(param);
+				window.location.href = nextUrl;
+			})
+    	}
 	}) 
-	//跳转到详情页
-	$("#detail").on("tap",function(){
-		var nextUrl = "sjsc-4.html";
-		var date = datailTime();
-		var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "date":date, "apiBase":apiBase};
-		nextUrl += "?param=" + JSON.stringify(param);
-		window.location.href = nextUrl;
-	})
+	
 	//返回
 	$("#backBtn").off("tap").on("tap", function() {
 		transParam({"action": "back"});
@@ -85,15 +86,13 @@ function datailTime(){
 	var ontap = $(".conDate").find(".ontap");
 	console.log(ontap)
 	if(ontap.length !== 0){
-		console.log(1)
 		T = addzero(ontap.attr("value"));
 	}else{
-		console.log(2)
 		T = addzero(today)
 	}
 	return T
 }
-/*未读信息获取 标注   测试*/
+/*详情信息获取 标注   测试*/
 function showUnread(){
 		/*获取列表*/
 	    var param = {"tokenId":tokenId};
@@ -103,17 +102,18 @@ function showUnread(){
 			successF : function(data) {
 				myCommon.closeLoading();
 				if(data["code"] != "200") {
-					muiToast('获取“未读班组列表”信息失败');
+					muiToast('获取“推送详情”信息失败');
 						return ;
 				}
 				console.log("data: " + JSON.stringify(data)); 
 				
-				$("#bzRecord ul").html("");//清空未读班组的值			
+				$("#bzRecord ul").html("");//清空推送详情的值
 				if(data["data"].length > 0){
-					/*获取teamName值*/	            		
+					var str = "";
+					/*获取teamName值*/				
 					$.each(data["data"], function(index, item) { 
 						var unreadName = item["teamName"];	
-						var unreadDate =item["tsDate"];
+						var unreadDate = item["tsDate"];
 						/*未读标注*/
 						$(".conDate span").each(function(index1,item1){
 							var val = addzero($(item1).attr("value"));						
@@ -121,9 +121,12 @@ function showUnread(){
 								$(item1).addClass("unread");
 							}
 						})					
-						/*生成今日未读班组*/
-						if(unreadDate == addzero(today)){
-							$("#bzRecord ul").append('<li class="mui-table-view-cell">'+unreadName+'</li>');											
+						/*生成推送详情*/
+						if(unreadDate == addzero(today)){					
+							str += '<li class="mui-table-view-cell"><div class = "bzxq"><span>'
+								+unreadName+'</span><span>'+"已读?"+'</span></div><div class = "tsDate"><span>'
+								+changeStyle(unreadDate)+'</span><span>'+"??:??:??"+'</span></div></li>'
+							$("#bzRecord ul").html(str);											
 						}															
 					});							
 				}else {
@@ -136,7 +139,7 @@ function showUnread(){
 			}, 
 			errorF : function() {
 						myCommon.closeLoading();
-						muiToast('获取“未读班组列表”信息失败');
+						muiToast('获取“推送详情”信息失败');
 			}
 		})
 //	}
@@ -155,23 +158,27 @@ function showUnreadDetail(date){
 			successF : function(data) {
 				myCommon.closeLoading();
 				if(data["code"] != "200") {
-					muiToast('获取“未读班组列表”信息失败');
+					muiToast('获取“推送详情”信息失败');
 					return ;
 				} 
 				if(data["data"].length > 0){						            		
+					var str = "";
 					$.each(data["data"], function(index, item) { 
 						var unreadName = item["teamName"];	
 						var unreadDate =item["tsDate"];									
 						var val = addzero(date);						
 						if(unreadDate == val){
-							$("#bzRecord ul").append('<li class="mui-table-view-cell">'+unreadName+'</li>');											
+							str += '<li class="mui-table-view-cell"><div class = "bzxq"><span>'
+								+unreadName+'</span><span>'+'已读'+'</span></div><div class = "tsDate"><span>'
+								+unreadDate+'</span><span>'+'::'+'</span></div></li>'
+							$("#bzRecord ul").html(str);											
 						}        		            		
 					});
 				}
 			},
 			errorF : function() {
 				myCommon.closeLoading();
-				muiToast('获取“未读班组列表”信息失败');
+				muiToast('获取“推送详情”信息失败');
 			}	
 		}) 	
 	}
@@ -260,4 +267,11 @@ function showDate(year,month,day) {
 function addzero(str){
 	var arr = str.split("-");
 	return arr[0]+"-"+(arr[1]<10?("0"+arr[1]):arr[1])+"-"+(arr[2]<10?("0"+arr[2]):arr[2])	
+}
+function changeStyle(str){
+	var arr = str.split("-");
+	return arr[0]+"/"+arr[1]+"/"+arr[2]	
+}
+function shujuzhengli(arr){
+	var tsDate = arr["tsDate"];
 }

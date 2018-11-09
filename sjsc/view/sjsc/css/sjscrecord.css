@@ -116,11 +116,11 @@
 }
 #bzRecord{
 	top:1px;
-	height:350px;
+	min-height:350px;
 	
 }
 #bzRecord ul{
-	padding-top:5px;
+	-padding-top:5px;
 }
 #bzRecord ul li{
 	padding:8px 15px;
@@ -130,5 +130,22 @@
 	text-align:left;
 }
 #bzRecord ul:after,#bzRecord ul li:after{
-	display: none;
+	left:0px;
+}
+.bzxq{
+	margin: 5px 0 10px 0px;
+	font-weight: bold;
+}
+.bzxq span:nth-child(2){
+	float:right;
+}
+.unreadRed{
+	color:red
+}
+.tsDate{
+	color:#666;
+	font-size: 16px;
+}
+.tsDate span:nth-child(1){
+	margin-right: 10px;
 }

@@ -51,20 +51,21 @@ $(document).ready(function() {
 	}
 	//跳转到新建页面
 	$(".createNew").on("tap", function() {
-	var nexturl = $(this).attr("hrefData");
-	if(!nexturl)
-	{
-		console.warn("fail, next page url not found")
-		return ;
-	}				
-	var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId};
-	if(jsonId) {
-		param["jsonId"] = jsonId;
-	}
-	nexturl += "?param=" + JSON.stringify(param);
-	myCommon.loading();
-	window.location.href = nexturl;
-});
+		window.localStorage.removeItem(cacheKey);
+		var nexturl = $(this).attr("hrefData");
+		if(!nexturl)
+		{
+			console.warn("fail, next page url not found")
+			return ;
+		}				
+		var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId};
+		if(jsonId) {
+			param["jsonId"] = jsonId;
+		}
+		nexturl += "?param=" + JSON.stringify(param);
+		myCommon.loading();
+		window.location.href = nexturl;
+	});
 	//塔杆编码获取
 	    if($("input[name=tower_number]").length > 0) {
 			var param = {"userId":userId, "tokenId":tokenId, "projId":projId};
@@ -123,10 +124,10 @@ $(document).ready(function() {
 			});
 			
 		} 
-//		else {
-//			//调取未保存表单数据
-//			loadCacheData();
-//		}
+		else {
+			//调取未保存表单数据
+			loadCacheData();
+		}
 		
    if($("input[name ='wanqu']")){
 		//调取未保存表单数据
@@ -262,57 +263,40 @@ $(document).ready(function() {
 			myCommon.closeLoading();
 			myCommon.myAlert("发布成功", "消息", ["确定"], function(){
 				var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId, "formId":[formId]};
-				if(jsonId) {
-					param["jsonId"] = jsonId;
-				}
+//				if(jsonId) {
+//					param["jsonId"] = jsonId;
+//				}
 				nexturl += "?param=" + JSON.stringify(param);
 				myCommon.loading();
 				window.location.href = nexturl;
 			});
 		});
-		return false;
 	});
 	
-//	$("#backBtn").off("tap").on("tap", function() {		
-//		// 保存当前表单信息
-//		if(formPage == "p0") {
-//			transParam({"action": "close"});
-//		} else if(formPage == "p1"){
-//			var formData = getFormData(true);
-//			console.info("表单中的值: ", JSON.stringify(formData));
-//			if(formData){
-//				saveConstructionList(formData);
-//			}			
-//			transParam({"action": "back"});
-//		}else if(formPage == "p2"){
-//			var formData = getFormData();
-//			transParam({"action": "back"});
-//		}
-//		
-//	});
-	$("#backBtn").off("tap").on("tap", function() {		
+	$("#backBtn").on("tap", function() {				
 		if(formPage == "p0") {
 			transParam({"action": "close"});
-		} else{
+		} else {			
+			// 保存当前表单信息
+			getFormData();		
 			transParam({"action": "back"});
 		}		
 	});
 	
 	$("#cacleBtn").on("tap", function() {
-		var nexturl = $(this).attr("hrefData");
-		if(!isIos()){
-			mui.confirm('是否放弃本次铁管塔评级','提示',['取消','确认'],function (e) {
-				if(e.index){
-					var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId, "formId":[formId]};
+		var nexturl = $(this).attr("hrefData");		
+		mui.confirm('是否放弃本次铁管塔评级','提示',['取消','确认'],function (e) {
+			if(e.index){
+				var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId, "formId":[formId]};
 //					if(jsonId) {
 //						param["jsonId"] = jsonId;
 //					}
-					nexturl += "?param=" + JSON.stringify(param);
-					myCommon.loading();
-					window.location.href = nexturl;
-				}
-			},'div')
-		}
+				nexturl += "?param=" + JSON.stringify(param);
+				myCommon.loading();
+				window.location.href = nexturl;
+			}
+		},'div')
+		
 	});
 	
 });
@@ -343,8 +327,8 @@ function getFormData(isPublish){
 		var type = self.attr("type");
 		if(name) {
 			if(type == "radio") {
-				name = $("input[type='radio']:checked").attr("typeName");
-				fdata[name] = $("input[name='qingxie'][type = text]").val();
+				name = $("input[type='radio']:checked").attr("name");
+				fdata[name] = $("input[type='radio']:checked").attr("typeName");
 			}else{
 				fdata[name] = self.val();
 			}
@@ -405,43 +389,51 @@ function getCacheDate(){
 	return chk_data;
 }
 
-//function loadCacheData() {
-//	var chk_data = getCacheDate();
-//	if(chk_data && chk_data[formPage]) {
-//		// 塔杆编码不可覆盖
-//		if($("input[name='text_tower_number']").length > 0 && $("input[name='text_tower_number']").val() != "") {
-//			//清除掉塔杆编码
-//			delete chk_data[formPage]["text_tower_number"];
-//			delete chk_data[formPage]["tower_number"];
-//		}				
-//		setFormData(chk_data[formPage]);	
-//		return true;
-//	}
-//	return false;
-//}
+function loadCacheData() {
+	var chk_data = getCacheDate();
+	if(chk_data && chk_data[formPage]) {
+		// 塔杆编码不可覆盖
+		if($("input[name='text_tower_number']").length > 0 && $("input[name='text_tower_number']").val() != "") {
+			//清除掉塔杆编码
+			delete chk_data[formPage]["text_tower_number"];
+			delete chk_data[formPage]["tower_number"];
+		}				
+		setFormData(chk_data[formPage]);	
+	}
+}
 
 
-function setFormData(data){
-	$.each(data, function(name, value) {
+function setFormData(data,isPubshed){
+	$.each(data, function(key, value) {
 		if(value) {
-			var obj = $("input[name='"+name+"']");
+			var obj = $("input[name='"+key+"']");
 			if(obj) {
 				var name = obj.attr("name");
 				var type = obj.attr("type");
 				if(type === "radio") {
-					if(value < 0.2){
-						value = "qingxie1"
-					}else{
-						value = "qingxie2"
-					}
 					$("input[type='radio'][typeName='"+value+"']").attr("checked", true);
 				}else{
 					obj.val(value);
 				}
-			obj.attr("disabled",true)	
+				if(isPubshed){
+					obj.attr("disabled",true)
+				}
+				
 			}		
 		}
 	});
+}
+function loadCacheData() {
+	var chk_data = getCacheDate();
+	if(chk_data && chk_data[formPage]) {
+		// 塔杆编码不可覆盖
+		if($("input[name='text_tower_number']").length > 0 && $("input[name='text_tower_number']").val() != "") {
+			//清除掉塔杆编码
+			delete chk_data[formPage]["text_tower_number"];
+			delete chk_data[formPage]["tower_number"];
+		}				
+		setFormData(chk_data[formPage]);		
+	}
 }
 // 获取默认施工记录，施工班组等信息
 function getRecordByTwoerNumber(towerNumber){
@@ -479,6 +471,9 @@ function getRecordByTwoerNumber(towerNumber){
 function saveConstructionList(data, callback){
 	data["formId"] = formId;
 	var data = {"userId":userId, "tokenId":tokenId, "data": data, "projId":projId};
+	if(jsonId) {
+		data["jsonId"] = jsonId;
+	}
 	console.log(data)
 	myCommon.loading();
 	myCommon.ajaxPost({
@@ -516,7 +511,7 @@ function getConstructionListDetail(jsonId){
 			if(typeof(data["data"]) == "string"){
 				data["data"] = JSON.parse(data["data"]);
 			}
-			setFormData(data["data"]);
+			setFormData(data["data"],true);
 			
 		},
 		errorF : function() {
@@ -551,6 +546,7 @@ function getConstructionList(){
 					$("#towerComplete").html(listData)				
 					//跳转到详情
 					$("#towerComplete .towerli a").on("tap",function(){
+						window.localStorage.removeItem(cacheKey);
 						var nexturl = $("#formTower").attr("action");
 						var jsonId = $(this).attr("jsonId");		
 						var param = {"userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId};

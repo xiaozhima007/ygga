@@ -46,7 +46,7 @@ mui-bar-nav .mui-icon{
 	content:attr(placeholder);
 }
 
-.conTitle{
+.sjsc-list .conTitle{
 	display: block;
 	background-color:rgb(237,237,240);
 	padding: 10px 0 10px 15px;

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>灌注桩签证</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/form.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left" id="backBtn">
+			<span>上一步</span>
+		</a>
+		<h1 class="mui-title">基础施工</h1>
+		<a class="mui-icon mui-pull-right" id="cacleBtn">取消</a>
+	</header>
+	<div id="main-body" class="mui-content">
+		<form id="formTower" data-id="8" data-page="4" data-loop-id="-1" data-code="JCJL_YBGZZQ" class="mui-input-group" method="get" action="">
+			<div class="mui-row form-title">主筋规格及数量</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="zjgesl" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">桩深m</div>
+			<div class="mui-input-row form-input">
+				<input type="decimal" name="zs" required="true" value="" maxlength="16" placeholder="" />
+			</div>
+			<div class="mui-row form-title">桩径mm</div>
+			<div class="mui-input-row form-input">
+				<input type="decimal" name="zj" required="true" value="" maxlength="16" placeholder="" />
+			</div>
+			<div class="mui-row form-title">桩体钢筋保护层厚度mm</div>
+			<div class="mui-row form-input">
+				<div class="mui-col-sm-6 mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>水下</label>
+						<input type="radio" name="ztgjbhc" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-6 mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>非水下</label>
+						<input type="radio" name="ztgjbhc" value="2" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-input-row form-input top-line">
+				<input type="decimal" name="ztgjbhchd" required="true" value="" maxlength="16" placeholder="" />
+			</div>
+			<div class="mui-row form-title">桩位中心偏差mm</div>
+			<div class="mui-input-row form-input">
+				<input type="decimal" name="zwzxpc" required="true" value="" maxlength="16" placeholder="" />
+			</div>
+			<div class="mui-row form-title">桩间偏移mm</div>
+			<div class="mui-input-row form-input">
+				<input type="decimal" name="zjpy" required="true" value="" maxlength="16" placeholder="" />
+			</div>
+			<div class="mui-row form-title">充盈系数a</div>
+			<div class="mui-input-row form-input">
+				<input type="decimal" name="cyxs" required="true" value="" maxlength="16" placeholder="" />
+			</div>
+			<div class="mui-button-row">
+				<button type="button" data-loading-text="发布" class="mui-btn" id="btnStepPublish">发布</button>
+			</div>
+		</form>
+	</div>
+    <script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="../../plugins/mui/js/mui.min.js"></script>
+	<script type="text/javascript" src="../../plugins/mui/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../common/js/common.js"></script>
+    <script type="text/javascript" src="js/form.js"></script>
+</body>
+</html>

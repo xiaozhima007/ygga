@@ -108,7 +108,7 @@ $(document).ready(function() {
 		})
 		
 		/*全选功能实现*/
-		$(".pickall-right input").off("tap").on("tap",function(){
+		$(".pickall-right input").on("tap",function(){
 			var listGroup = $(".listgroup");
 			if(this.checked == true){
 				listGroup.each(function(index,item){
@@ -159,7 +159,7 @@ $(document).ready(function() {
 			myCommon.closeLoading();
 			mui.confirm('今日三交三查已推送',"",['返回','查看'],function (e) {
 				if(e.index === 1){	
-					var nextUrl = detailUrl; 
+					var nextUrl = recordUrl; 
 					var oDate = new Date();
 					var date = oDate.getFullYear()+"-"+(oDate.getMonth()+1)+"-"+oDate.getDate();
 					var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "date":date,"apiBase": apiBase}
@@ -169,15 +169,15 @@ $(document).ready(function() {
 			},'div')
 		})	
 	})
-	/*记录按钮跳转*/
-	$("#record").on("tap",function(){
-		var nextUrl = recordUrl; 
-		var oDate = new Date();
-		var date = oDate.getFullYear()+"-"+(oDate.getMonth()+1)+"-"+oDate.getDate();
-		var param = {"userId":userId, "tokenId":tokenId, "apiBase":apiBase, "projId":projId, "date":date}
-		nextUrl += "?param=" + JSON.stringify(param);
-		window.location.href = nextUrl;
-	})	
+//	/*记录按钮跳转*/
+//	$("#record").on("tap",function(){
+//		var nextUrl = recordUrl; 
+//		var oDate = new Date();
+//		var date = oDate.getFullYear()+"-"+(oDate.getMonth()+1)+"-"+oDate.getDate();
+//		var param = {"userId":userId, "tokenId":tokenId, "apiBase":apiBase, "projId":projId, "date":date}
+//		nextUrl += "?param=" + JSON.stringify(param);
+//		window.location.href = nextUrl;
+//	})	
 })
    
 // 保存数据到服务器

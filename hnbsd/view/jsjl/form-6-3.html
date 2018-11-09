@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>灌注桩3-1</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/form.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left" id="backBtn">
+			<span>上一步</span>
+		</a>
+		<h1 class="mui-title">基础施工</h1>
+		<a class="mui-icon mui-pull-right" id="cacleBtn">取消</a>
+	</header>
+	<div id="main-body" class="mui-content">
+		<form id="formTower" data-id="6" data-page="3" data-loop-id="-1" data-code="JCJL_XJ" class="mui-input-group" method="get" action="form-6-4.html">
+			<div class="mui-row form-title">成孔方式</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="ckfs" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">钻孔直径</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="zkzj" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">钻孔深度m</div>
+			<div class="mui-input-row form-input">
+				<input type="decimal" name="zksd" required="true" value="" maxlength="16" placeholder="" />
+			</div>
+			<div class="mui-row form-title">浇制温度</div>
+            <div class="mui-row form-grid">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-55 mui-col-xs-55">
+						<div class="mui-input-row">
+							<input type="text" maxlength="6" required="true" name="szwd_f" value="" />
+							<unit>℃</unit>
+						</div>
+					</div>
+					<div class="mui-col-sm-1 mui-col-xs-1 form-operator">
+					    <span>~</span>
+				    </div>
+					<div class="mui-col-sm-55 mui-col-xs-55">
+						<div class="mui-input-row">
+							<input type="text" maxlength="6" required="true" name="szwd_t" value="" />
+							<unit>℃</unit>
+						</div>
+					</div>
+				</div>
+            </div>
+			<div class="mui-row form-title">混凝土设计等级</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="hntqd" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">试块强度</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="skqd" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">坍落度mm</div>
+			<div class="mui-input-row form-input">
+				<input type="decimal" name="dld" required="true" value="" maxlength="16" placeholder="" />
+			</div>
+			<div class="mui-row form-title">材料用量（kg/m<sup>3</sup>）</div>
+			<div class="mui-input-row form-input">
+				<label>水泥</label>
+				<input type="decimal" name="shuini" required="true" value="" maxlength="16" placeholder="" />
+			</div>
+			<div class="mui-input-row form-input top-line">
+				<label>矿粉</label>
+				<input type="text" name="kf" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-input-row form-input top-line">
+				<label>粉煤灰</label>
+				<input type="text" name="fmh" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-input-row form-input top-line">
+				<label>砂</label>
+				<input type="text" name="sha" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-input-row form-input top-line">
+				<label>石</label>
+				<input type="text" name="shi" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-input-row form-input top-line">
+				<label>水</label>
+				<input type="text" name="shui" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-input-row form-input top-line">
+				<label>外加剂</label>
+				<input type="text" name="wjj" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-input-row form-input top-line">
+				<label>其他</label>
+				<input type="text" name="qita" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">水泥品种</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="snbz" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">砂子规格</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="szgg" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">石子粒径mm</div>
+			<div class="mui-input-row form-input">
+				<input type="decimal" name="szlj" required="true" value="" maxlength="16" placeholder="" />
+			</div>
+			<div class="mui-button-row">
+				<button type="button" data-loading-text="下一步" class="mui-btn" id="btnStepNext">下一步</button>
+			</div>
+		</form>
+	</div>
+    <script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="../../plugins/mui/js/mui.min.js"></script>
+	<script type="text/javascript" src="../../plugins/mui/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../common/js/common.js"></script>
+    <script type="text/javascript" src="js/form.js"></script>
+</body>
+</html>
