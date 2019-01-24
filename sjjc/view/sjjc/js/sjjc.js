@@ -10,8 +10,11 @@ var sgjlData = [
 		{"formId": "JCZJ_SJSC", "id": "3", "name": "基础专检记录"},
 		{"formId": "ZLJDZJ_SJSC", "id": "4", "name": "组立接地专检表"},
 		{"formId": "ZLJDZZJ_SJSC", "id": "5", "name": "组立接地自检表"},
-		{"formId": "ZLJDFJ_SJSC", "id": "6", "name": "组立接地复检表"}];
-var formIdArr = ["DLFJ_SJSC","DLZJ_SJSC","JCZJ_SJSC","ZLJDZJ_SJSC","ZLJDZZJ_SJSC","ZLJDFJ_SJSC"];
+		{"formId": "ZLJDFJ_SJSC", "id": "6", "name": "组立接地复检表"},
+		{"formId": "JXZJ_SJSC", "id": "7", "name": "架线自检记录"},
+		{"formId": "JXFJ_SJSC", "id": "8", "name": "架线复检记录"},
+		{"formId": "JXZHJ_SJSC", "id": "9", "name": "架线专检记录"}];
+var formIdArr = ["DLFJ_SJSC","DLZJ_SJSC","JCZJ_SJSC","ZLJDZJ_SJSC","ZLJDZZJ_SJSC","ZLJDFJ_SJSC","JXZJ_SJSC","JXFJ_SJSC","JXZHJ_SJSC"];
 $(document).ready(function() {
 	// MUI框架初始化
 	mui.init();
@@ -62,6 +65,7 @@ $(document).ready(function() {
 //		myCommon.myAlert("页面传入参数错误", "提示", ["确定"]);
 //		return ;
 //	}
+
 	if(readonly ==false && $("input[name = search]").length > 0){
 		getConstructionList();
 //		getTempjsonList(formIdArr,function(data){
@@ -77,8 +81,7 @@ $(document).ready(function() {
 	$(".createNew").on("tap", function() {
 		window.localStorage.removeItem(cacheKey);
 		var nexturl = $(this).attr("hrefData");
-		if(!nexturl)
-		{
+		if(!nexturl){
 			console.warn("fail, next page url not found")
 			return ;
 		}				
@@ -151,8 +154,7 @@ $(document).ready(function() {
     }
 	
 	//施工列表获取
-    if(readonly == false && $("input[name=sgjl]").length > 0 && !apptempjsonId)
-    {
+    if(readonly == false && $("input[name=sgjl]").length > 0 && !apptempjsonId){
 		var sgjl_list = [];
 		$.each(sgjlData, function(index, item) {
 			sgjl_list.push(item["name"]);
@@ -161,8 +163,7 @@ $(document).ready(function() {
     }
 	
 	// 获取监理单位
-    if(readonly == false && $("input[name=jldw]").length > 0)
-    {
+    if(readonly == false && $("input[name=jldw]").length > 0){
 		var param = {"userId":userId, "tokenId":tokenId, "projId":projId};
 		myCommon.loading();
         myCommon.ajaxGet({
@@ -187,8 +188,7 @@ $(document).ready(function() {
         });
 	}
     
-	if(readonly == false)
-	{
+	if(readonly == false){
 		$("form input[type='text']").off("tap").on("input propertychange", function() {
 			var self = $(this);
 			//self.val() != "" && setEmptyInputRed(self, "remove");
@@ -236,12 +236,27 @@ $(document).ready(function() {
 				self.val(timeVal);
 			});
 		});
+		//生成“不符合”原因填写框
+		if(formId === "JXZJ_SJSC" || formId === "JXFJ_SJSC"){			
+			$(".form-input.mui-row").each(function(index, item){	
+				var name = $(item).find("input[type = radio]").prop("name")+"_reason";
+				var str = '<div class="noMatch mui-input-row top-line hidden"><textarea name = "'+name+'" rows="4" autofocus="autofocus" placeholder="请输入不符合原因" ></textarea></div>';
+				$(item).after(str)						
+			})
+			$("input[type = radio]").on("click",function(){
+				if($(this).val() === "2"){
+					$(this).parents(".form-input").next(".noMatch").removeClass("hidden");
+				}else{
+					$(this).parents(".form-input").next(".noMatch").addClass("hidden");
+				}
+			})
+		}
+		
 		// 选择列表
 		$(".form-select > input[type=text][format=options]").off("tap").on("tap", function() {
 			var self = $(this);
 			var options = self.data("options");
-			if(!options)
-			{
+			if(!options){
 				console.warn("options null")
 				return ;
 			}
@@ -254,12 +269,9 @@ $(document).ready(function() {
 			}
 			var itemLists = [];
 			$.each(options, function(index, item) {
-				if (typeof(item) == "object")
-				{
+				if (typeof(item) == "object"){
 					itemLists.push({"text": item[1], "value": item[0]});
-				}
-				else
-				{
+				}else{
 					itemLists.push({"text": item, "value": item});
 				}
 			});
@@ -286,8 +298,7 @@ $(document).ready(function() {
 	
 	$("#btnStepNext").on("tap", function() {
 		var nexturl = $("form[id=formTower]").attr("action");
-		if(!nexturl)
-		{
+		if(!nexturl){
 			console.warn("fail, next page url not found")
 			return ;
 		}
@@ -388,8 +399,7 @@ $("#backBtn").on("tap", function() {
 	})
 });
 
-function inputFilter(text, regex)
-{
+function inputFilter(text, regex){
 	if(text != "")
 	{
 		while(true)
@@ -410,7 +420,7 @@ function inputFilter(text, regex)
 function getFormData(isPublish, requiredBreak){
 	if(typeof(isPublish) == "undefined"){ isPublish = false; }
 	var fdata = {};
-	$(".mui-input-row input, .mui-row input").each(function(index, item) {
+	$(".mui-input-row input, .mui-row input, .mui-input-row textarea").each(function(index, item) {
 		var self = $(item);
 		var name = self.attr("name");
 		var type = self.attr("type");
@@ -449,8 +459,7 @@ function getFormData(isPublish, requiredBreak){
 	}
 }
 
-function getCacheDate()
-{
+function getCacheDate(){
 	var chk_data = {};
 	var chk_content = window.localStorage.getItem(cacheKey);
 	if(chk_content != null && chk_content != "") {
@@ -468,17 +477,17 @@ function getCacheDate()
 	return chk_data;
 }
 
-function setFormData(data,isPushed)
-{
+function setFormData(data,isPushed){
 	$.each(data, function(name, value) {
 		if(value) {
-			var obj = $("input[name='"+name+"']");
+			var obj = $("input[name='"+name+"'], textarea[name = '"+name+"']");
 			if(obj) {
 				var name = obj.attr("name");
 				var type = obj.attr("type");
 				if(type == "radio") {
 					$("input[type='radio'][name='"+name+"'][value='"+value+"']").attr("checked", true);
 				}else{
+					obj.parent().removeClass("hidden");
 					obj.val(value);
 				}
 				if(isPushed)
@@ -499,8 +508,7 @@ function loadCacheData() {
 		setFormData(chk_data[formPage]);		
 	}
 }
-function pageDumpByFormType(typeName)
-{
+function pageDumpByFormType(typeName){
 	var fId = null;
 	$.each(sgjlData, function(index, item) {
 		if(item["name"] == typeName) {
@@ -519,8 +527,7 @@ function pageDumpByFormType(typeName)
 }
 
 // 获取施工记录，施工班组等信息
-function getRecordByTwoerNumber(towerNumber)
-{
+function getRecordByTwoerNumber(towerNumber){
 	var param = {"userId":userId, "formId":formId, "towerNumber": towerNumber, "tokenId":tokenId,"projId":projId};
 	console.log(param)
 	myCommon.loading();
@@ -626,8 +633,7 @@ function getConstructionList(){
 		}
 	})
 }
-function getConstructionListDetail(jsonId)
-{
+function getConstructionListDetail(jsonId){
 	var param = {"userId":userId, "jsonId":jsonId, "tokenId":tokenId,"projId":projId};
 	myCommon.loading();
 	myCommon.ajaxGet({

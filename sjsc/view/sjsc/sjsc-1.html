@@ -17,7 +17,7 @@
 		    <sapn class="mui-title">三交三查</sapn>
 		</header>		
 		<div class="mui-content">
-			<form action="" method="get" format = "srData" >								
+			<form action="" method="get" format = "srData" formPage = "0">								
 				<div class="T-today" name = "rq" value = ""></div>
 				<ul class="mui-table-view sjsc-list">
 						<li class="mui-table-view-cell ">
@@ -44,10 +44,10 @@
 								<div class="mui-input-row">
 									<div class = "textarea" name = "cjszt" contenteditable="true" placeholder="请录入">所有班组人员要精神状态良好。</div>
 								</div>
-								<div class = "voiceControl">
+								<!--<div class = "voiceControl">
 									<img class = "voiceIcon" src= "img/voice1.png">
 									<span class = "voiceTime"></span>
-								</div>
+								</div>-->
 							</div>
 						</li>
 						<li class="mui-table-view-cell">
@@ -56,10 +56,10 @@
 								<div class="mui-input-row">
 									<div class = "textarea" name = "jr" contenteditable="true" placeholder="请录入"></div>
 								</div>
-								<div class = "voiceControl">
+								<!--<div class = "voiceControl">
 									<img class = "voiceIcon" src= "img/voice1.png">
 									<span class = "voiceTime"></span>
-								</div>
+								</div>-->
 							</div>
 						</li>
 						<li class="mui-table-view-cell">
@@ -68,10 +68,10 @@
 								<div class="mui-input-row">
 									<div class = "textarea" name = "jj" contenteditable="true" placeholder="请录入"></div>
 								</div>	
-								<div class = "voiceControl">
+								<!--<div class = "voiceControl">
 									<img class = "voiceIcon" src= "img/voice1.png">
 									<span class = "voiceTime"></span>
-								</div>						
+								</div>						-->
 							</div>
 						</li>
 						<li class="mui-table-view-cell">
@@ -80,10 +80,10 @@
 								<div class="mui-input-row">
 									<div class = "textarea" name = "ja" contenteditable="true" placeholder="请录入"></div>
 								</div>
-								<div class = "voiceControl">
+								<!--<div class = "voiceControl">
 									<img class = "voiceIcon" src= "img/voice1.png">
 									<span class = "voiceTime"></span>
-								</div>
+								</div>-->
 							</div>
 						</li>
 				</ul>
@@ -99,70 +99,65 @@
 		<script src="../../common/js/common.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/sjsc-pick.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			$(document).ready(function () {
-				var textArea = $('textarea');
-				function  cglHeight() {
-					textArea.each(function(index,item){
-						var cglTextHeight = item.scrollHeight;
-						$(item).css('height',cglTextHeight+'px');
-					})           
-				};
-				cglHeight();
-				textArea.on('keyup mousedown mouseup focus blur',function(){
-					cglHeight();
-				});
-				//语音输入模块
-				var resultText = "",time_start = null;
+//			$(document).ready(function () {
+//				var textArea = $('textarea');
+//				function  cglHeight() {
+//					textArea.each(function(index,item){
+//						var cglTextHeight = item.scrollHeight;
+//						$(item).css('height',cglTextHeight+'px');
+//					})           
+//				};
+//				cglHeight();
+//				textArea.on('keyup mousedown mouseup focus blur',function(){
+//					cglHeight();
+//				});
 				
-				$(".voiceIcon").on("tap",function(){
-					var voiceT = $(this).next("span")[0];//获取时间显示节点
-					if(!$(voiceT).hasClass("onListen") && time_start==null){
-						this.src = "img/voice2.png";
-						$(voiceT).addClass("onListen").html("00:00:00");
-						pointer = $(this).parent().prev().children(".textarea").get(0);
-						time_start = time_fun(voiceT);//启动定时器	
-						newRecognition();
-						//alert(resultText);
-						//$(this).parent().prev().children(".textarea").append(resultText);
-						
-					}else{
-						this.src = "img/voice1.png";
-						$(voiceT).removeClass("onListen");
-						clearInterval(time_start);
-						time_start = null;
-											
-					}								
-				})
-											
-					//调用原生的方法
-				function newRecognition() {
-					hnsbd.jsCallAndroid();
-				}
-								
-				function time_fun(obj) {
-					var sec=0;
-					return setInterval(function () {
-						sec++;
-						var date = new Date(0, 0);
-						date.setSeconds(sec);
-						var h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
-						$(obj).html(two_char(h) + ":" + two_char(m) + ":" + two_char(s))
-					}, 1000);
-				} 
-				function two_char(n) {
-					return n >= 10 ? n : "0" + n;        
-				}  
-			});
-			var pointer = null;//存储this指向 
-			//接受解析语音的方法
-			function showResult(str){
-				resultText = str;
-				if(resultText){					
-					pointer.innerText += resultText;
-				}else{
-					alert("没有检测到结果，请重新录入！")
-				}
-			}
+//				//语音输入模块（正常）   //模块暂停，后续可能采用录音文件的形式替代语音识别      
+//				var resultText = "",time_start = null;				
+//				$(".voiceIcon").on("tap",function(){
+//					var voiceT = $(this).next("span")[0];//获取时间显示节点
+//					if(!$(voiceT).hasClass("onListen") && time_start==null){
+//						this.src = "img/voice2.png";
+//						$(voiceT).addClass("onListen").html("00:00:00");
+//						pointer = $(this).parent().prev().children(".textarea").get(0);
+//						time_start = time_fun(voiceT);//启动定时器	
+//						newRecognition();
+//					}else{
+//						this.src = "img/voice1.png";
+//						$(voiceT).removeClass("onListen");
+//						clearInterval(time_start);
+//						time_start = null;
+//											
+//					}								
+//				})											
+//				//调用原生的方法
+//				function newRecognition() {
+//					hnsbd.jsCallAndroid();
+//				}								
+//				function time_fun(obj) {
+//					var sec=0;
+//					return setInterval(function () {
+//						sec++;
+//						var date = new Date(0, 0);
+//						date.setSeconds(sec);
+//						var h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
+//						$(obj).html(two_char(h) + ":" + two_char(m) + ":" + two_char(s))
+//					}, 1000);
+//				} 
+//				function two_char(n) {
+//					return n >= 10 ? n : "0" + n;        
+//				}  
+//			});
+//			var pointer = null;//存储this指向 
+//			//接受解析语音的方法
+//			function showResult(str){
+//				resultText = str;
+//				if(resultText){					
+//					pointer.innerText += resultText;
+//				}else{
+//					alert("没有检测到结果，请重新录入！")
+//				}
+//			}
 		</script>
 	</body>
 </html>

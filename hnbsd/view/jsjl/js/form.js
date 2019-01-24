@@ -119,32 +119,6 @@ $(document).ready(function() {
 		$("input[name=text_sgjl]").data("options", JSON.stringify(sgjl_list));
     }
 	
-	// 获取监理单位
-    if($("input[name=jldw]").length > 0){
-		var param = {"userId":userId, "tokenId":tokenId, "projId":projId};
-		myCommon.loading();
-        myCommon.ajaxGet({
-            urlV : apiBase + "/getSpSuppmtList?param="+JSON.stringify(param),
-            successF : function(data) {
-				myCommon.closeLoading();
-                if(data["code"] != "200") {
-                    muiToast('获取“监理单位”信息失败');
-                    return ;
-                }
-                console.log("data: " + JSON.stringify(data));
-                var jldw_list = [];
-                $.each(data["data"], function(index, item) {
-                    jldw_list.push(item["supplierName"]);
-                });
-                $("input[name=text_jldw]").data("options", JSON.stringify(jldw_list));
-            },
-            errorF : function() {
-				myCommon.closeLoading();
-                muiToast('获取“监理单位”信息失败');
-            }
-        });
-	}
-    
 	//if(readonly == false){
 		$("form input[type='text']").off("tap").on("input propertychange", function() {
 			var self = $(this);
@@ -478,7 +452,7 @@ function pageDumpByFormType(typeName){
 	}
 }
 
-// 获取施工记录，施工班组等信息
+// 获取施工记录，施工班组、监理单位等信息
 function getRecordByTwoerNumber(towerNumber){
 	var param = {"userId":userId, "formId":formId, "towerNumber": towerNumber, "tokenId":tokenId,"projId":projId};
 	myCommon.loading();
@@ -492,8 +466,24 @@ function getRecordByTwoerNumber(towerNumber){
 			}
 			console.log("data: " + JSON.stringify(data));
 			if(typeof(data["data"]["banzu"]) != "undefined") {
-			delete data["data"]["banzu"];
+				delete data["data"]["banzu"];
 			}
+			
+			// 获取监理单位	
+			var total_text_jianli = $("input[name=text_jldw], input[name=text_jianli]");
+			var total_jianli = $("input[name=jldw], input[name=jianli]");
+			if(total_text_jianli) {	
+				var jldw_list = [];
+				$.each(data["data"]["JLDW"], function(index, item) {
+					jldw_list.push(item["supplier_name"]);
+				});
+				total_text_jianli.data("options", JSON.stringify(jldw_list));
+				if(jldw_list.length > 0) {
+					total_text_jianli.val(jldw_list[0]);
+					total_jianli.val(jldw_list[0]);
+				}
+			}
+				
 			setFormData(data["data"],true);
 //			//调取未保存表单数据
 //			loadCacheData();

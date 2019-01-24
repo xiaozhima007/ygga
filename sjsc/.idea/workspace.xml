@@ -2,7 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34fefb28-9c02-4613-8be9-4a5b66c49172" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../ggtpj/view/ggtpj/js/ggtpj.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ggtpj/view/ggtpj/js/ggtpj.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-1-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-1-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-3-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-3-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-4-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-4-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-5-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-5-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-6-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-6-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-8-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/../hnbsd/view/jsjl/form-8-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hnbsd/view/jsjl/js/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/../hnbsd/view/jsjl/js/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jdgl/view/jdgl/css/progressManagement.css" beforeDir="false" afterPath="$PROJECT_DIR$/../jdgl/view/jdgl/css/progressManagement.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qhsb/view/qhsb.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../qhsb/view/qhsb.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../qhsb/view/qhsb/js/qhsb.js" beforeDir="false" afterPath="$PROJECT_DIR$/../qhsb/view/qhsb/js/qhsb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../qhsb/view/qhsb/qhsb-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../qhsb/view/qhsb/qhsb-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sjjc/view/sjjc.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../sjjc/view/sjjc.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sjjc/view/sjjc/css/sjjc.css" beforeDir="false" afterPath="$PROJECT_DIR$/../sjjc/view/sjjc/css/sjjc.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sjjc/view/sjjc/js/sjjc.js" beforeDir="false" afterPath="$PROJECT_DIR$/../sjjc/view/sjjc/js/sjjc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sjjc/view/sjjc/sjjc-1-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../sjjc/view/sjjc/sjjc-1-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sjjc/view/sjjc/sjjc-2-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../sjjc/view/sjjc/sjjc-2-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sjjc/view/sjjc/sjjc-3-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../sjjc/view/sjjc/sjjc-3-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/sjsc/js/sjsc-pick.js" beforeDir="false" afterPath="$PROJECT_DIR$/view/sjsc/js/sjsc-pick.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/sjsc/js/sjsc-record.js" beforeDir="false" afterPath="$PROJECT_DIR$/view/sjsc/js/sjsc-record.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/sjsc/js/speech.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/sjsc/sjsc-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/view/sjsc/sjsc-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/sjsc/sjsc-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/view/sjsc/sjsc-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/sjsc/sjsc-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/view/sjsc/sjsc-4.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,9 +41,11 @@
     <session id="-434873123">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -35,17 +61,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/view/sjsc/sjsc-1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="26" column="55" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -56,9 +72,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="100" />
-    <option name="y" value="20" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="349" />
+    <option name="y" value="22" />
     <option name="width" value="1400" />
     <option name="height" value="820" />
   </component>
@@ -81,12 +97,6 @@
               <item name="sjsc" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="sjsc" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sjsc" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="sjsc" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -95,7 +105,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="J:/myreact/AwesomeProject" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
@@ -121,11 +131,13 @@
       <option name="presentableId" value="Default" />
       <updated>1541471747534</updated>
       <workItem from="1541471749491" duration="803000" />
+      <workItem from="1545285944785" duration="3000" />
+      <workItem from="1545286796898" duration="433000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="803000" />
+    <option name="totallyTimeSpent" value="1239000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -137,15 +149,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="349" y="22" width="1400" height="820" extended-state="0" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11533587" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.091776796" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -153,6 +161,10 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32974428" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -167,8 +179,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/view/sjsc/sjsc-1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="55" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
+        <state relative-caret-position="114">
+          <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
         </state>
       </provider>
     </entry>

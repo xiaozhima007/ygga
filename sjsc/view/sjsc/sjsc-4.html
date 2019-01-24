@@ -12,11 +12,11 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" id = "backBtn"></a>
+		    <a class="mui-icon mui-icon-left-nav mui-pull-left" id = "backBtn"></a>
 		    <sapn class="mui-title">三交三查</sapn>
 		</header>		
 		<div class="mui-content">
-			<form action="" method="get" format = "xqData" >								
+			<form action="" method="get" format = "xqData" formPage = "3">								
 				<div class="T-time"></div>
 				<ul class="mui-table-view sjsc-list">
 						<li class="mui-table-view-cell ">
@@ -77,20 +77,5 @@
 		<script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
 		<script src="../../common/js/common.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/sjsc-pick.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-		 $(document).ready(function () {
-        var _textarea = $('textarea');
-        function  cglHeight() {
-					_textarea.each(function(index,item){
-						 var cglTextHeight = item.scrollHeight;
-            $(item).css('height',cglTextHeight+'px');
-					})           
-        };
-        cglHeight();
-        _textarea.on('keyup mousedown mouseup focus blur',function(){
-            cglHeight();
-        });
-    });
-		</script>
 	</body>
 </html>

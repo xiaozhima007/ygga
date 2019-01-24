@@ -60,10 +60,11 @@ $(document).ready(function() {
 		}
     	else{
     		//跳转到详情页		
-			$(".tsxq li").on("tap",function(){
+			$(".tsxq li").on("click",function(){
 				var nextUrl = "sjsc-4.html";
 				var date = datailTime();
-				var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "date":date, "apiBase":apiBase};
+				var teamId = $(this).attr("teamId");
+				var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "date":date, "apiBase":apiBase, "teamId":teamId};
 				nextUrl += "?param=" + JSON.stringify(param);
 				window.location.href = nextUrl;
 			})
@@ -95,7 +96,7 @@ function datailTime(){
 /*详情信息获取 标注   测试*/
 function showUnread(){
 		/*获取列表*/
-	    var param = {"tokenId":tokenId};
+	    var param = {"tokenId":tokenId,"projId":projId};
 		myCommon.loading();
 		myCommon.ajaxGet({
 			urlV : apiBase + "/payCheckNotReadUser?param="+JSON.stringify(param),
@@ -112,6 +113,7 @@ function showUnread(){
 					var str = "";
 					/*获取teamName值*/				
 					$.each(data["data"], function(index, item) { 
+						var isRead = (item["isRead"]-0)?'<span>已读</span>':'<span class = "unreadRed">未读</span>';
 						var unreadName = item["teamName"];	
 						var unreadDate = item["tsDate"];
 						/*未读标注*/
@@ -123,9 +125,9 @@ function showUnread(){
 						})					
 						/*生成推送详情*/
 						if(unreadDate == addzero(today)){					
-							str += '<li class="mui-table-view-cell"><div class = "bzxq"><span>'
-								+unreadName+'</span><span>'+"已读?"+'</span></div><div class = "tsDate"><span>'
-								+changeStyle(unreadDate)+'</span><span>'+"??:??:??"+'</span></div></li>'
+							str += '<li class="mui-table-view-cell" teamId = '+item["teammanageId"]+'><div class = "bzxq"><span>'
+								+unreadName+'</span><span>'+isRead+'</span></div><div class = "tsDate"><span>'
+								+changeStyle(unreadDate)+'</span><span>'+item["ts_date2"]+'</span></div></li>'
 							$("#bzRecord ul").html(str);											
 						}															
 					});							
@@ -151,7 +153,7 @@ function showUnreadDetail(date){
 	if (urlParam) {
 		apiBase = urlParam["apiBase"];
 		tokenId = urlParam["tokenId"];			
-		var param = {"tokenId":tokenId};
+		var param = {"tokenId":tokenId,"projId":projId};
 		myCommon.loading();
 		myCommon.ajaxGet({
 			urlV : apiBase + "/payCheckNotReadUser?param="+JSON.stringify(param),
@@ -164,13 +166,14 @@ function showUnreadDetail(date){
 				if(data["data"].length > 0){						            		
 					var str = "";
 					$.each(data["data"], function(index, item) { 
+						var isRead = (item["isRead"]-0)?'<span>已读</span>':'<span class = "unreadRed">未读</span>';
 						var unreadName = item["teamName"];	
 						var unreadDate =item["tsDate"];									
 						var val = addzero(date);						
-						if(unreadDate == val){
-							str += '<li class="mui-table-view-cell"><div class = "bzxq"><span>'
-								+unreadName+'</span><span>'+'已读'+'</span></div><div class = "tsDate"><span>'
-								+unreadDate+'</span><span>'+'::'+'</span></div></li>'
+						if(unreadDate === val){
+							str += '<li class="mui-table-view-cell" teamId = '+item["teammanageId"]+'><div class = "bzxq"><span>'
+								+unreadName+'</span><span>'+isRead+'</span></div><div class = "tsDate"><span>'
+								+changeStyle(unreadDate)+'</span><span>'+item["ts_date2"]+'</span></div></li>'
 							$("#bzRecord ul").html(str);											
 						}        		            		
 					});

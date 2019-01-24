@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>三级检查</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/sjjc.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left" id="backBtn"></a>
+		<h1 class="mui-title">架线复检记录</h1>
+		<a class="mui-icon mui-pull-right" id="cacleBtn">取消</a>
+	</header>
+	<div id="main-body" class="mui-content">
+		<form id="formTower" data-id="8" data-page="3" data-loop-id="-1" data-code="JXFJ_SJSC" class="mui-input-group" method="get" action="">	
+            <div class="mui-row form-title">跳线制作</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="txzz" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="txzz" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="txzz" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">跳线弧垂</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="txhc" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="txhc" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="txhc" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">跳线对杆塔电气间隙</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="txdgtdqjx" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="txdgtdqjx" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="txdgtdqjx" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">跳线连接板安装</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="txljbaz" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="txljbaz" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="txljbaz" value="3" />
+					</div>
+				</div>
+			</div>  
+			<div class="mui-row form-title">闭（开）口销及弹簧销</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="bkxjthx" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="bkxjthx" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="bkxjthx" value="3" />
+					</div>
+				</div>
+			</div>  
+			<div class="mui-row form-title">螺旋及销子穿入方向</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="lxjxzcrfx" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="lxjxzcrfx" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="lxjxzcrfx" value="3" />
+					</div>
+				</div>
+			</div>           
+  			<div class="mui-row form-title">悬垂绝缘子串倾斜</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="xcjyzcqx" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">线夹螺栓紧固</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="xjlsjg" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="xjlsjg" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="xjlsjg" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">铝包带缠绕</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="lbdcr" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="lbdcr" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="lbdcr" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">防震锤安装</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="fzcaz" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="fzcaz" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="fzcaz" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">间隔棒安装</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="jgbaz" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="jgbaz" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="jgbaz" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">放电间隔及其安装</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="fdjgjqaz" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="fdjgjqaz" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="fdjgjqaz" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">均压环、屏蔽环安装</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="jyhpbhaz" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="jyhpbhaz" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="jyhpbhaz" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">光缆引下线及接续盒</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="glyxxjjxh" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="glyxxjjxh" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="glyxxjjxh" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">基面回填平整、挡土墙、护坡</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="jmhtpz" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="jmhtpz" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="jmhtpz" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-title">标识牌安装及通道处理</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>符合</label>
+						<input type="radio" name="bspazjtdcl" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-4 mui-col-xs-4">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>不符合</label>
+						<input type="radio" name="bspazjtdcl" value="2" />
+					</div>
+				</div>
+				<div class="mui-col-sm-5 mui-col-xs-5">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>无此检查项</label>
+						<input type="radio" name="bspazjtdcl" value="3" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-line-white"></div>
+			<div class="mui-button-row">
+				<button type="button" data-loading-text="发布" class="mui-btn" id="btnStepPublish">发布</button>
+			</div>
+		</form>
+	</div>
+    <script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="../../plugins/mui/js/mui.min.js"></script>
+	<script type="text/javascript" src="../../plugins/mui/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../common/js/common.js"></script>
+    <script type="text/javascript" src="js/sjjc.js"></script>
+</body>
+</html>

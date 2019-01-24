@@ -1,9 +1,10 @@
-var apiBase, userId, tokenId, projId, jsonId = null,
+var apiBase, userId, tokenId, projId,teamId, jsonId = null,
 	xqDate= null,
 	listUrl = "sjsc-2.html",
 	recordUrl = "sjsc-3.html",
 	detailUrl = "sjsc-4.html",
 	format = $("form").attr("format"),
+	formPage = $("form").attr("formPage"),
 	data = [],
 	time_start = null,
     oDate = new Date(),
@@ -27,6 +28,7 @@ $(document).ready(function() {
 		userId = urlParam["userId"];
 		tokenId = urlParam["tokenId"];
 		projId = urlParam["projId"];
+		teamId = urlParam["teamId"];
 		if(urlParam["date"]){
 			xqDate = urlParam["date"];
 		}
@@ -34,7 +36,8 @@ $(document).ready(function() {
 	if(format == "srData"){
 		//获取当前日期
 		$(".T-today").html(`${new Date().getFullYear()}年${new Date().getMonth()+1}月${new Date().getDate()}日`);
-		$(".T-today").attr("value",`${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`)
+		$(".T-today").attr("value",`${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`);
+		loadCacheData()
 	}
 	
 	//下一步按钮功能实现
@@ -107,20 +110,9 @@ $(document).ready(function() {
 			}
 		})
 		
-		/*全选功能实现*/
-		$(".pickall-right input").on("tap",function(){
-			var listGroup = $(".listgroup");
-			if(this.checked == true){
-				listGroup.each(function(index,item){
-					item.checked = true;
-				})
-			}else{
-				listGroup.each(function(index,item){
-					item.checked = false;
-					console.log(this.checked)
-				})	
-			}
-			console.log(this.checked)
+		/*全选功能实现 简易版本*/
+		$("#checkAll").on("click",function(){
+			$(".listgroup").prop("checked",this.checked)
 		})
 	}
 	
@@ -132,12 +124,13 @@ $(document).ready(function() {
 			setData(data)
 		})
 	}
-	function setData(data){
-		console.log(data)
-	}
 	$("#backBtn").off("tap").on("tap", function() {
-		transParam({"action": "close"});
-		//transParam({"action": "back"});
+		if(formPage == "0"){
+			localStorage.removeItem("sjsc_content");
+			transParam({"action": "close"});			
+		}else{			
+			transParam({"action": "back"});
+		}
 	});	
 	
 	/*数据提交*/
@@ -147,10 +140,10 @@ $(document).ready(function() {
 		$(".bzListCon input[name ='teamName']:checked").each(function(index,item){			
 			self = $(item);
 			var fdata = {};
-				if(!localStorage.key(index) || JSON.parse(localStorage.getItem(localStorage.key(index))) !== timemark){	
+				//if(!localStorage.key(index) || JSON.parse(localStorage.getItem(localStorage.key(index))) !== timemark){	
 					fdata["teamId"] = self.attr("teamid");	
 					pushData.push(fdata);				
-				}			
+				//}			
 		})
 		var dataList = localStorage.getItem("sjsc_content");
 		console.log(JSON.stringify(pushData))
@@ -169,15 +162,15 @@ $(document).ready(function() {
 			},'div')
 		})	
 	})
-//	/*记录按钮跳转*/
-//	$("#record").on("tap",function(){
-//		var nextUrl = recordUrl; 
-//		var oDate = new Date();
-//		var date = oDate.getFullYear()+"-"+(oDate.getMonth()+1)+"-"+oDate.getDate();
-//		var param = {"userId":userId, "tokenId":tokenId, "apiBase":apiBase, "projId":projId, "date":date}
-//		nextUrl += "?param=" + JSON.stringify(param);
-//		window.location.href = nextUrl;
-//	})	
+	/*记录按钮跳转*/
+	$("#record").on("tap",function(){
+		var nextUrl = recordUrl; 
+		var oDate = new Date();
+		var date = oDate.getFullYear()+"-"+(oDate.getMonth()+1)+"-"+oDate.getDate();
+		var param = {"userId":userId, "tokenId":tokenId, "apiBase":apiBase, "projId":projId, "date":date}
+		nextUrl += "?param=" + JSON.stringify(param);
+		window.location.href = nextUrl;
+	})	
 })
    
 // 保存数据到服务器
@@ -195,7 +188,7 @@ function getPayCheckPush(data,dataList,callback){
 			if(data["code"] != "200") {
 				muiToast('发布信息失败');
 			} else if(typeof(callback) == "function") {
-				localStorage.setItem(JSON.stringify(data["teamId"]),JSON.stringify(timemark));//本地存储id及时间戳
+				//localStorage.setItem(JSON.stringify(data["teamId"]),JSON.stringify(timemark));//本地存储id及时间戳
 				callback();
 			}
 		},
@@ -208,7 +201,7 @@ function getPayCheckPush(data,dataList,callback){
 
 //获取详情
 function getCheckDetail (date,callback) {
-	var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "date":date};
+	var param = {"tokenId":tokenId, "userId":userId, "projId":projId, "date":date, "teamId":teamId};
 	myCommon.loading();
 	myCommon.ajaxGet({
 		urlV : apiBase + "/getCheckDetail?param="+JSON.stringify(param),
@@ -228,6 +221,41 @@ function getCheckDetail (date,callback) {
 			muiToast('获取“详情”信息失败');
 		},
 	})
+}
+function getCacheDate(){
+	var chk_data = {};
+	var chk_content = window.localStorage.getItem("sjsc_content");
+	if(chk_content != null && chk_content != "") {
+		try {
+			chk_data = JSON.parse(chk_content);
+		}catch(error){
+			chk_data = {};
+		}
+	}
+	return chk_data;
+}
+
+function loadCacheData() {
+	var chk_data = getCacheDate();
+	if(chk_data) {		
+		setData(chk_data);	
+	}
+}
+function setData(data){
+	var data = data;
+		$.each(data,function(index,item){				
+			$.each(item,function(name,value){
+				$(".textarea").each(function(index1,item1){
+					var self = $(item1);
+					if(self.attr("name") === name){
+						self.html(value);
+					}
+				})
+			})
+		})
+}
+function removeCheckDate (){
+	localStorage.removeItem("sjsc_content")
 }
 
 		

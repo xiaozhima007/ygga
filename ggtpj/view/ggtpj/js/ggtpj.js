@@ -423,18 +423,6 @@ function setFormData(data,isPubshed){
 		}
 	});
 }
-function loadCacheData() {
-	var chk_data = getCacheDate();
-	if(chk_data && chk_data[formPage]) {
-		// 塔杆编码不可覆盖
-		if($("input[name='text_tower_number']").length > 0 && $("input[name='text_tower_number']").val() != "") {
-			//清除掉塔杆编码
-			delete chk_data[formPage]["text_tower_number"];
-			delete chk_data[formPage]["tower_number"];
-		}				
-		setFormData(chk_data[formPage]);		
-	}
-}
 // 获取默认施工记录，施工班组等信息
 function getRecordByTwoerNumber(towerNumber){
 	var param = {"userId":userId, "formId":formId, "towerNumber": towerNumber, "tokenId":tokenId, "projId":projId};

@@ -3,7 +3,7 @@ body{
 }
 .mui-bar{
 	background:#4a90e2;
-	background-image:linear-gradient(140deg, #0093ce 0%, #343285 100%);
+	-background-image:linear-gradient(140deg, #0093ce 0%, #343285 100%);
 	height:46px;
 }
 .mui-title{

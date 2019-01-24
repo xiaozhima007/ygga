@@ -44,8 +44,9 @@
 				<input type = "text" class = "hide" name = "banzu" value = "" /> 
 			</div>
 			<div class="mui-row form-title top-no-line">监理名称</div>
-			<div class="mui-input-row form-input bottom-line">
-				<input type="text" name="jianli" required="true" value="" maxlength="32" placeholder="请输入" />
+			<div class="mui-input-row form-input bottom-line form-select">
+				<input type="text" format="options" readonly="readonly" required="true" data-options='[]' name="text_jianli" value="" placeholder="请选择" />
+                <input type="text" class="hide" name="jianli" value="" />
 			</div>
 			<div class="mui-row form-line"></div>
             <div class="mui-row form-grid">
@@ -53,19 +54,19 @@
                 <div class="mui-col-sm-8 mui-col-xs-8">
                     <div class="mui-input-row">
                         <label>A</label>
-                        <input type="text" maxlength="32" required="true" name="jm_a" value="" />
+                        <input type="text" maxlength="32" required="true" name="sgjm_a" value="" />
                     </div>
                     <div class="mui-input-row">
                         <label>B</label>
-                        <input type="text" maxlength="32" required="true" name="jm_b" value="" />
+                        <input type="text" maxlength="32" required="true" name="sgjm_b" value="" />
                     </div>
                     <div class="mui-input-row">
                         <label>C</label>
-                        <input type="text" maxlength="32" required="true" name="jm_c" value="" />
+                        <input type="text" maxlength="32" required="true" name="sgjm_c" value="" />
                     </div>
                     <div class="mui-input-row">
                         <label>D</label>
-                        <input type="text" maxlength="32" required="true" name="jm_d" value="" />
+                        <input type="text" maxlength="32" required="true" name="sgjm_d" value="" />
                     </div>
                 </div>
             </div>

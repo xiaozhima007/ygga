@@ -13,18 +13,18 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" id = "backBtn"></a>
+		    <a class="mui-icon mui-icon-left-nav mui-pull-left" id = "backBtn"></a>
 		    <a id="record" class="mui-icon mui-pull-right">记录</a>
 		    <sapn class="mui-title">三交三查</sapn>
 		</header>		
 		<div class="mui-content">
-			<form action="" method="get" format = "listData" >								
+			<form action="" method="get" format = "listData" formPage = "1" >								
 				<div class="mui-row pickall">
 				    <div class="mui-col-xs-8 pick-bz">请选择推送班组</div>
 				    <div class="mui-col-xs-4">	
 				    	<div class="mui-input-row mui-checkbox mui-left pickall-right">
 				    	  <label>全选</label>
-				    	  <input name="checkbox1" type="checkbox">
+				    	  <input id = "checkAll" name="checkbox1" type="checkbox">
 				    	</div>			 	  
 				    </div>
 				</div>
