@@ -8,3 +8,4 @@ http://127.0.0.1/fxgl/view/fxgl/fxgl-detail.html?param={"tokenId":"455f8c6094904
 http://192.168.10.254:9080/grm/ecpm.proj.hnsbd/AndroidService/getRiskList?param={"tokenId":"b6004391793749688ad1f579d121ed4c","projId":"C7C9291BD1F75ACADE695971041A376F","numberAndName":""}
 http://192.168.10.254:9080/grm/ecpm.proj.hnsbd/AndroidService/getRiskDetail?param={"tokenId":"b6004391793749688ad1f579d121ed4c","projId":"C7C9291BD1F75ACADE695971041A376F","riskId":"844cc10d-99c5-4726-b466-50cae441f6f3"}
 
+2019-03-12 :本次删除了搜索框内的语音识别按钮。

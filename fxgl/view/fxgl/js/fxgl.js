@@ -67,7 +67,7 @@ function getRiskList(inputData){
 					muiToast('获取信息失败');
 					return ;
 				}
-				console.log("data: " + JSON.stringify(data["data"]));
+//				console.log("data: " + JSON.stringify(data["data"]));
 				if(data["data"].length > 0){
 					var listData = "";
 					$.each(data["data"], function(index,item) {
@@ -108,7 +108,7 @@ function getRiskDetail (riskId) {
 					muiToast('获取详情信息失败');
 					return ;
 				}
-				console.log("详情data: " + JSON.stringify(data["data"]));
+//				console.log("详情data: " + JSON.stringify(data["data"]));
 				setFormData(data["data"][0])
 			},
 			errorF : function() {

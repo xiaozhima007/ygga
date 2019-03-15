@@ -44,3 +44,4 @@ var chk_content = window.localStorage.getItem(chk_key);
 var chk_data = JSON.parse(chk_content);
 console.info("chk_data: ", JSON.stringify(chk_data));
 
+2019-03-12 :本次删除了搜索框内的语音识别按钮。

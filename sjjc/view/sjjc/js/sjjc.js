@@ -107,7 +107,7 @@ $(document).ready(function() {
 						muiToast('获取“塔杆编码”信息失败');
 						return ;
 					}
-					console.log("data: " + JSON.stringify(data["data"]));
+//					console.log("data: " + JSON.stringify(data["data"]));
 					// 独立数组转换
 					if(typeof(data["data"]) == "object" && (data["data"] instanceof Array) && data["data"].length > 0) {
 						data["data"] = data["data"][0];
@@ -174,7 +174,7 @@ $(document).ready(function() {
                     muiToast('获取“监理单位”信息失败');
                     return ;
                 }
-                console.log("data: " + JSON.stringify(data));
+ //               console.log("data: " + JSON.stringify(data));
                 var jldw_list = [];
                 $.each(data["data"], function(index, item) {
                     jldw_list.push(item["supplierName"]);
@@ -221,7 +221,7 @@ $(document).ready(function() {
 			datePicker.show(function (selectItems) {
 				//setEmptyInputRed(self, "remove");
 				var dateVal = selectItems.y.value + "-" + selectItems.m.value + "-" + selectItems.d.value;
-				console.log("date: " + dateVal);
+//				console.log("date: " + dateVal);
 				self.val(dateVal);
 			});
 		});
@@ -232,7 +232,7 @@ $(document).ready(function() {
 			timePicker.show(function (selectItems) {
 				//setEmptyInputRed(self, "remove");
 				var timeVal = selectItems.h.value + ":" + selectItems.i.value + ":00";
-				console.log("time: " + timeVal);
+//				console.log("time: " + timeVal);
 				self.val(timeVal);
 			});
 		});
@@ -282,7 +282,7 @@ $(document).ready(function() {
 				var realName = self.attr("name").substr(5);
 				var selectVal = selectedItem[0]['value'];
 				var selectText = selectedItem[0]['text'];
-				console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
+//				console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
 				self.val(selectText);
 				$("input[name="+realName+"]").val(selectVal);
 				//塔杆编码被选择
@@ -436,7 +436,7 @@ function getFormData(isPublish, requiredBreak){
 			}
 		}
 	});	
-	console.log(JSON.stringify(fdata));
+//	console.log(JSON.stringify(fdata));
 	
 	var chk_data = getCacheDate();
 	if(isPublish){
@@ -529,7 +529,7 @@ function pageDumpByFormType(typeName){
 // 获取施工记录，施工班组等信息
 function getRecordByTwoerNumber(towerNumber){
 	var param = {"userId":userId, "formId":formId, "towerNumber": towerNumber, "tokenId":tokenId,"projId":projId};
-	console.log(param)
+//	console.log(param)
 	myCommon.loading();
 	myCommon.ajaxGet({
 		urlV : apiBase + "/getRecordByTwoerNumber1?param="+JSON.stringify(param),
@@ -539,7 +539,7 @@ function getRecordByTwoerNumber(towerNumber){
 				muiToast('获取“根据塔杆编码获取默认值记录”信息失败');
 				return ;
 			}
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(typeof(data["data"]["banzu"]) != "undefined") {
 			delete data["data"]["banzu"];
 			}
@@ -567,7 +567,7 @@ function saveConstructionList(data, callback){
 		data: data,
 		successF : function(data) {
 			myCommon.closeLoading();
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(data["code"] != "200") {
 				muiToast('发布信息失败');
 			} else if(typeof(callback) == "function") {
@@ -592,7 +592,7 @@ function getConstructionList(){
 				muiToast('获取列表信息失败');
 				return ;
 			}
-			console.log("data: " + JSON.stringify(data["data"]));
+//			console.log("data: " + JSON.stringify(data["data"]));
 			if(data["data"]){
 				var listData = "";
 				$.each(data["data"], function(index,item) {
@@ -644,7 +644,7 @@ function getConstructionListDetail(jsonId){
 				muiToast('获取信息失败');
 				return ;
 			}
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(typeof(data["data"]) == "string"){
 				data["data"] = JSON.parse(data["data"]);
 			}

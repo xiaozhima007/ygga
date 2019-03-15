@@ -17,3 +17,5 @@ http://127.0.0.1/ggtpj/view/ggtpj/ggtpj-createNew-1.html?param={"tokenId":"455f8
 http://127.0.0.1/ggtpj/view/ggtpj/qualityControl.html?param={"tokenId":"455f8c60949047e78ff800733efddd04","projId":"DA4B58AE931F99E6B052B0CE1011DDBA","userId":"5003","apiBase":"http://127.0.0.1/grm/ecpm.proj.hnsbd/AndroidService"}
 
 http://192.168.10.140:9080/grm/ecpm.proj.hnsbd/AndroidService/userLogin?param={"passWord":"abcd.1234","userName":"xz"}
+
+2019-03-12 :本次删除了搜索框内的语音识别按钮。

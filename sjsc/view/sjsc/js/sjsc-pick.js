@@ -45,7 +45,7 @@ $(document).ready(function() {
 		var isCompleted = true;
 		//保存当前数据
 		var dataList = getFormData(false);
-		console.log(JSON.stringify(dataList))
+		////console.log(JSON.stringify(dataList))
 		//判断是否有未填项
 		$.each(dataList,function(index,item){
 			$.each(item,function(key,value){
@@ -97,7 +97,7 @@ $(document).ready(function() {
 					muiToast('获取“班组列表”信息失败');
 					return ;
 				}
-				console.log("data: " + JSON.stringify(data));   
+				////console.log("data: " + JSON.stringify(data));   
 				var oDate = new Date();
 				var date = oDate.getFullYear()+"-"+(oDate.getMonth()+1)+"-"+oDate.getDate();
 				$.each(data["data"], function(index, item) {               		
@@ -121,7 +121,7 @@ $(document).ready(function() {
 		$(".T-time").html(`${theTime[0]}年${theTime[1]}月${theTime[2]}日`)
 		
 		getCheckDetail(xqDate,function(data){
-			setData(data)
+			setData(JSON.parse(data))
 		})
 	}
 	$("#backBtn").off("tap").on("tap", function() {
@@ -146,8 +146,8 @@ $(document).ready(function() {
 				//}			
 		})
 		var dataList = localStorage.getItem("sjsc_content");
-		console.log(JSON.stringify(pushData))
-		console.log(JSON.stringify(dataList))
+		//console.log(JSON.stringify(pushData))
+		//console.log(JSON.stringify(dataList))
 		getPayCheckPush(pushData,dataList,function(){
 			myCommon.closeLoading();
 			mui.confirm('今日三交三查已推送',"",['返回','查看'],function (e) {
@@ -177,14 +177,14 @@ $(document).ready(function() {
 function getPayCheckPush(data,dataList,callback){
 	var data = {"tokenId":tokenId, "userId":userId, "projId":projId, "data": data};
 	data["dataDetail"] = {"dataList":dataList};
-	console.log("发送数据："+JSON.stringify(data))
+	//console.log("发送数据："+JSON.stringify(data))
 	myCommon.loading();
 	myCommon.ajaxPost({
 		urlV : apiBase + "/getPayCheckPush",
 		data: data,
 		successF : function(data) {
 			myCommon.closeLoading();
-			console.log("data: " + JSON.stringify(data));
+			//console.log("data: " + JSON.stringify(data));
 			if(data["code"] != "200") {
 				muiToast('发布信息失败');
 			} else if(typeof(callback) == "function") {
@@ -211,7 +211,7 @@ function getCheckDetail (date,callback) {
 				muiToast('获取“详情”信息失败');
 				return ;
 			}
-			console.log("详情data: " + JSON.stringify(data));   
+			//console.log("详情data: " + JSON.stringify(data));   
 			if(callback && typeof callback == "function"){
 				callback(data["dataList"]);
 			}

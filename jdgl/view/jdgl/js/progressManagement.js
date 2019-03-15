@@ -17,7 +17,6 @@ $(document).ready(function(){
 	
 	/*mui时间插件实现*/
 	$(".mui-input-group input[type=text][format=date]").off("tap").on("tap",function(){	
-		alert(2)
 		var self = $(this);
 		var dtpicker = new mui.DtPicker({
 		    type: "date",//设置日历年月日视图模式 
@@ -75,7 +74,7 @@ $(document).ready(function(){
 				if(jsonId) {
 					param["jsonId"] = jsonId;
 				}
-				console.log(param)
+//				console.log(param)
 				nexturl += "?param=" + JSON.stringify(param);
 				myCommon.loading();
 				window.location.href = nexturl;					
@@ -117,7 +116,7 @@ $(document).ready(function(){
 						if(jsonId) {
 							param["jsonId"] = jsonId;
 						}
-						console.log(param)
+//						console.log(param)
 						nexturl += "?param=" + JSON.stringify(param);
 						myCommon.loading();
 						window.location.href = nexturl;
@@ -132,7 +131,7 @@ $(document).ready(function(){
 	/*新建页面跳转*/	
 	$(".createNew").on("tap",function(){
 		var nexturl = $(this).attr("hrefData");
-		console.log(nexturl)
+//		console.log(nexturl)
 		var param = {"userId": userId, "tokenId": tokenId, "projId":projId, "apiBase": apiBase, "progressType":progressType};
 		if(jsonId) {
 			param["jsonId"] = jsonId;
@@ -153,7 +152,7 @@ $(document).ready(function(){
 					tower_number_list.push([item["id"],item["towernumber"]]);
 				});
 				$("input[name='text_tower_number']").data("options", JSON.stringify(tower_number_list));
-				console.log(tower_number_list)
+//				console.log(tower_number_list)
 			}			
 			$(".form-select > input[type=text][format=options]").off("tap").on("tap", function() {
 				var self = $(this);
@@ -189,14 +188,14 @@ $(document).ready(function(){
 					var realName = self.attr("name").substr(5);
 					var selectVal = selectedItem[0]['value'];
 					var selectText = selectedItem[0]['text'];
-					console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
+//					console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
 					self.val(selectText);
 					$("input[name="+realName+"]").val(selectText);
 					$("input[name="+realName+"]").attr("fid",selectVal);
 					towerNumber = selectText;
 					if(realName == "tower_number"){
 						var param2 = {"userId":userId, "tokenId":tokenId, "projId":projId, "progressType":progressType, "towerNumber":selectText};
-						console.log(param2)
+//						console.log(param2)
 						getTowerTaskInfo(param2,function(data){						
 							/*生成列表*/
 							$.each(data["dataList"], function(index, item) {
@@ -287,12 +286,12 @@ $(document).ready(function(){
 			if(!formData.length) {
 				return ;
 			}
-			console.log("formdata: ", JSON.stringify(formData));
+//			console.log("formdata: ", JSON.stringify(formData));
 			saveFeedbackInfo(formData,function(){
 				myCommon.closeLoading();
 				myCommon.myAlert("发布成功", "消息", ["确定"], function(){
 					var nexturl = This.attr("hrefData") || $("form").attr("action");
-					console.log(nexturl)
+//					console.log(nexturl)
 					var param = {"userId": userId, "tokenId": tokenId, "projId":projId, "progressType":progressType, "apiBase": apiBase, "towerNumber":""};
 					if(jsonId) {
 						param["jsonId"] = jsonId;
@@ -347,7 +346,7 @@ function getFeedbackProgress(param,callback){
 				muiToast('获取“塔杆编码”信息失败');
 				return ;
 			}
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(typeof(callback) == "function"){
 				callback(data);
 			}
@@ -370,7 +369,7 @@ function getUnFeedbackTowerInfo(param,callback){
 				muiToast('获取“塔杆编码”信息失败');
 				return ;
 			}
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(typeof(callback) == "function"){
 				callback(data);
 			}
@@ -392,7 +391,7 @@ function getTowerTaskInfo(param,callback){
 				muiToast('获取“塔杆编码”信息失败');
 				return ;
 			}
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(typeof(callback) == "function"){
 				callback(data);
 			}
@@ -406,14 +405,14 @@ function getTowerTaskInfo(param,callback){
 /*保存信息到服务器*/
 function saveFeedbackInfo(data,callback){
 	var data = {"userId":userId, "tokenId":tokenId, "projId":projId, "progressType":progressType, "dataList": data, "towerNumber":towerNumber};
-	console.log(data)
+//	console.log(data)
 	myCommon.loading();
 	myCommon.ajaxPost({
 		urlV : apiBase + "/saveFeedbackInfo",
 		data: data,
 		successF : function(data) {
 			myCommon.closeLoading();
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(data["resultCode"] == "205") {
 				muiToast('发布信息失败');
 			} else if(data["resultCode"] == "206"){
@@ -441,7 +440,7 @@ function getFormData(){
 		fdataarr.push(fdata)		
 	});
 
-	console.log(fdataarr)
+//	console.log(fdataarr)
 	return fdataarr;
 }
 function setFormData(data){

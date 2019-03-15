@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image, FlatList, Button, TouchableHighlight} from 'react-native';
 
+const fontChange = 1.0;
 export default class NewsListlPage extends Component {
   static navigationOptions = {
     title: "新闻"
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   newsTitle:{
-    fontSize: 16,
+    fontSize: 16*fontChange,
     color: '#333',
     fontWeight: 'bold',
   },
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     paddingLeft: 3
   },
   newsSatelliteText:{
-    fontSize: 14,
+    fontSize: 14*fontChange,
     color: '#989898',
   },
   marginR8:{
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     height: 139,
   },
   stick:{
-    fontSize: 12,
+    fontSize: 12*fontChange,
     color:'#E60C0C',
     paddingRight: 12
   }

@@ -16,3 +16,5 @@ http://127.0.0.1/jdgl/view/jdgl/createNewBasics.html?param={%22userId%22:%225003
 http://127.0.0.1/jdgl/view/jdgl/progress_basicsList.html?param={"towerNumber":"","tokenId":"64a2e5e89ba943599211b0f0db8aeb48","projId":"C7C9291BD1F75ACADE695971041A376F","userId":"5003","progressType":"base","apiBase":"http://127.0.0.1/grm/ecpm.proj.hnsbd/AndroidService"}
 
 http://192.168.10.254:9080/grm/ecpm.proj.hnsbd/AndroidService/getTowerTaskInfo?param=param={"towerNumber":"8L025",userId:"5003",progressType:%27base%27,projId:"C7C9291BD1F75ACADE695971041A376F",tokenId:"88de6ede147348ea83282ec6ccd9a4ec"}
+
+2019-03-12 :本次删除了搜索框内的语音识别按钮。

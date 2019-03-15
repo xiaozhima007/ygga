@@ -37,7 +37,7 @@ $(document).ready(function() {
 		$("#calendar").on("tap",function(e){	    
 	    var e = e || window.event;
 	    var target = e.srcElement || e.target;
-	//console.log(target)
+	////console.log(target)
 	    //把日历的头部的年月日分割成数组，这里保存在其value属性上
 	    var dayArr = timeTitle.getAttribute('value').split('-');
         //如果是上一月的点击
@@ -85,7 +85,7 @@ function init(){
 function datailTime(){
 	var T = "";
 	var ontap = $(".conDate").find(".ontap");
-	console.log(ontap)
+	//console.log(ontap)
 	if(ontap.length !== 0){
 		T = addzero(ontap.attr("value"));
 	}else{
@@ -106,7 +106,7 @@ function showUnread(){
 					muiToast('获取“推送详情”信息失败');
 						return ;
 				}
-				console.log("data: " + JSON.stringify(data)); 
+				//console.log("data: " + JSON.stringify(data)); 
 				
 				$("#bzRecord ul").html("");//清空推送详情的值
 				if(data["data"].length > 0){
@@ -257,7 +257,7 @@ function nextMonth(year,month,day){
 
 //显示年月日
 function showDate(year,month,day) {
-	//console.log(month)
+	////console.log(month)
     var date = "",firstDay = dayOfWeek(year,month,1);		    
     date = textOfMonth[month] + "月 " +year;		    		   
     timeTitle.innerHTML = date; //日历头部显示

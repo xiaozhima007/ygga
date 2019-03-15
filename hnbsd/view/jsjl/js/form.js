@@ -60,7 +60,7 @@ $(document).ready(function() {
 					muiToast('获取“塔杆编码”信息失败');
 					return ;
 				}
-				console.log("data: " + JSON.stringify(data["data"]));
+//				console.log("data: " + JSON.stringify(data["data"]));
 				// 独立数组转换
 				if(typeof(data["data"]) == "object" && (data["data"] instanceof Array) && data["data"].length > 0) {
 					data["data"] = data["data"][0];
@@ -152,7 +152,7 @@ $(document).ready(function() {
 			datePicker.show(function (selectItems) {
 				//setEmptyInputRed(self, "remove");
 				var dateVal = selectItems.y.value + "-" + selectItems.m.value + "-" + selectItems.d.value;
-				console.log("date: " + dateVal);
+//				console.log("date: " + dateVal);
 				self.val(dateVal);
 			});
 		});
@@ -163,7 +163,7 @@ $(document).ready(function() {
 			timePicker.show(function (selectItems) {
 				//setEmptyInputRed(self, "remove");
 				var timeVal = selectItems.h.value + ":" + selectItems.i.value + ":00";
-				console.log("time: " + timeVal);
+//				console.log("time: " + timeVal);
 				self.val(timeVal);
 			});
 		});
@@ -197,7 +197,7 @@ $(document).ready(function() {
 				var realName = self.attr("name").substr(5);
 				var selectVal = selectedItem[0]['value'];
 				var selectText = selectedItem[0]['text'];
-				console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
+//				console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
 				self.val(selectText);
 				$("input[name="+realName+"]").val(selectVal);
 				//塔杆编码被选择
@@ -315,7 +315,7 @@ function getFormData(isPublish, requiredBreak){
 		}
 	});
 	
-	console.log(JSON.stringify(fdata));
+//	console.log(JSON.stringify(fdata));
 	
 	
 	if(requiredBreak != false) {
@@ -464,7 +464,7 @@ function getRecordByTwoerNumber(towerNumber){
 				muiToast('获取“根据塔杆编码获取默认值记录”信息失败');
 				return ;
 			}
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(typeof(data["data"]["banzu"]) != "undefined") {
 				delete data["data"]["banzu"];
 			}
@@ -508,7 +508,7 @@ function saveConstructionList(data, callback){
 		data: data,
 		successF : function(data) {
 			myCommon.closeLoading();
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(data["code"] != "200") {
 				muiToast('发布信息失败');
 			} else if(typeof(callback) == "function") {
@@ -533,7 +533,7 @@ function getConstructionListDetail(jsonId){
 				muiToast('获取信息失败');
 				return ;
 			}
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(typeof(data["data"]) == "string"){
 				data["data"] = JSON.parse(data["data"]);
 			}

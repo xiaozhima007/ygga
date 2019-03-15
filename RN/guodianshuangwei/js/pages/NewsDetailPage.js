@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
+const fontChange = 1.0;
 export default class NewsDetailPage extends Component {
   static navigationOptions = {
     title: "新闻详情"
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     paddingLeft: 12
   },
   headerTitle:{
-    fontSize: 18,
+    fontSize: 18*fontChange,
     color: '#333',
     fontWeight: 'bold',
   },
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     paddingLeft: 3
   },
   headerSatelliteText:{
-    fontSize: 14,
+    fontSize: 14*fontChange,
     color: '#989898',
     marginRight: 18
   },
@@ -101,19 +102,19 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   contentText:{
-    fontSize: 16,
+    fontSize: 16*fontChange,
     color: '#333'
   },
   accessoryView:{
     marginTop: 16
   },
   accessory:{
-    fontSize: 16,
+    fontSize: 16*fontChange,
     color: '#989898',
     marginBottom: 6
   },
   accessoryFile:{
-    fontSize: 16,
+    fontSize: 16*fontChange,
     color: '#3176AF'
   }
 });

@@ -57,7 +57,7 @@ $(document).ready(function() {
 					muiToast('获取“缺货上报”信息失败');
 					return ;
 				}
-				console.log("data: " + JSON.stringify(data["data"]));				
+//				console.log("data: " + JSON.stringify(data["data"]));				
 				//塔杆编码
 				if($("input[name='text_towerNo']").length > 0 && typeof(data["data"]["towerList"]) == "object") {
 					var tower_number_list = [];
@@ -106,7 +106,7 @@ $(document).ready(function() {
 			var self = $(this);
 			datePicker.show(function (selectItems) {
 				var dateVal = selectItems.y.value + "-" + selectItems.m.value + "-" + selectItems.d.value;
-				console.log("date: " + dateVal);
+//				console.log("date: " + dateVal);
 				self.val(dateVal);
 			});
 		});
@@ -116,7 +116,7 @@ $(document).ready(function() {
 			var self = $(this);
 			timePicker.show(function (selectItems) {
 				var timeVal = selectItems.h.value + ":" + selectItems.i.value + ":00";
-				console.log("time: " + timeVal);
+//				console.log("time: " + timeVal);
 				self.val(timeVal);
 			});
 		});
@@ -150,7 +150,7 @@ $(document).ready(function() {
 				var selectVal = selectedItem[0]['value'];
 				var selectText = selectedItem[0]['text'];
 				var select_towerCompany = selectedItem[0]['tower_company'];
-				console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
+//				console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
 				self.val(selectText);
 				$("input[name="+realName+"]").val(selectText);
 				if(realName === "towerNo"){
@@ -250,7 +250,7 @@ function getFormData(isPublish){
 //			}
 		}
 	});	
-	console.log(JSON.stringify(fdata));
+//	console.log(JSON.stringify(fdata));
 	
 	var chk_data = getCacheDate();
 	if(isPublish){
@@ -307,7 +307,7 @@ function goodsoutReport(data, callback){
 		data: data,
 		successF : function(data) {
 			myCommon.closeLoading();
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(data["code"] != "200") {
 				muiToast('发布信息失败');
 			} else if(typeof(callback) == "function") {

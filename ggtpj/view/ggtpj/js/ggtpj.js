@@ -78,7 +78,7 @@ $(document).ready(function() {
 						muiToast('获取“塔杆编码”信息失败');
 						return ;
 					}
-					console.log("data: " + JSON.stringify(data["data"]));
+//					console.log("data: " + JSON.stringify(data["data"]));
 					// 独立数组转换
 					if(typeof(data["data"]) == "object" && (data["data"] instanceof Array) && data["data"].length > 0) {
 						data["data"] = data["data"][0];
@@ -176,7 +176,7 @@ $(document).ready(function() {
 			datePicker.show(function (selectItems) {
 				//setEmptyInputRed(self, "remove");
 				var dateVal = selectItems.y.value + "-" + selectItems.m.value + "-" + selectItems.d.value;
-				console.log("date: " + dateVal);
+//				console.log("date: " + dateVal);
 				self.val(dateVal);
 			});
 		});
@@ -187,7 +187,7 @@ $(document).ready(function() {
 			timePicker.show(function (selectItems) {
 				//setEmptyInputRed(self, "remove");
 				var timeVal = selectItems.h.value + ":" + selectItems.i.value + ":00";
-				console.log("time: " + timeVal);
+//				console.log("time: " + timeVal);
 				self.val(timeVal);
 			});
 		});
@@ -224,7 +224,7 @@ $(document).ready(function() {
 				var realName = self.attr("name").substr(5);
 				var selectVal = selectedItem[0]['value'];
 				var selectText = selectedItem[0]['text'];
-				console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
+//				console.log("object selected, name: " + realName + ", text: "+ selectText + ", value: " + selectVal);
 				self.val(selectText);
 				$("input[name="+realName+"]").val(selectText);
 				//塔杆编码被选择
@@ -241,7 +241,7 @@ $(document).ready(function() {
 			return ;
 		}		
 	 	var formData = getFormData();	
-	 	console.log(formData)
+//	 	console.log(formData)
 		var towerNumber = $("input[name= 'tower_number']").val();	
 		var param = {"towerNumber":towerNumber, "userId": userId, "tokenId": tokenId, "apiBase": apiBase, "projId":projId};
 		if(jsonId) {
@@ -339,11 +339,11 @@ function getFormData(isPublish){
 		}
 	});
 	
-	console.log(JSON.stringify(fdata));
+//	console.log(JSON.stringify(fdata));
 	//if(requiredBreak == true) {
 		var chk_data = getCacheDate();
 		if(isPublish){
-			console.log("cookie data: " + JSON.stringify(chk_data));			
+//			console.log("cookie data: " + JSON.stringify(chk_data));			
 			// 混合当前表单和COOKIE数据
 			$.each(chk_data, function(page, item) {
 				if(page == ("p1" || "p2" )){  //排除手机内之前的缓存数据影响
@@ -361,7 +361,7 @@ function getFormData(isPublish){
 			// 判断操作，下一步保存数据
 			if(formPage === "p1" || "p2"){
 				chk_data[formPage] = fdata;	
-				console.log(chk_data)
+//				console.log(chk_data)
 				window.localStorage.setItem(cacheKey, JSON.stringify(chk_data));
 			}
 			return true;
@@ -435,7 +435,7 @@ function getRecordByTwoerNumber(towerNumber){
 				muiToast('获取“根据塔杆编码获取默认值记录”信息失败');
 				return ;
 			}
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			//塔型获取
 			if($("input[name=text_tower_type]").length > 0) {	
 				$("input[name=text_tower_type]").val(data["data"]["tower_type"]);
@@ -462,14 +462,14 @@ function saveConstructionList(data, callback){
 	if(jsonId) {
 		data["jsonId"] = jsonId;
 	}
-	console.log(data)
+//	console.log(data)
 	myCommon.loading();
 	myCommon.ajaxPost({
 		urlV : apiBase + "/saveConstructionList",
 		data: data,
 		successF : function(data) {
 			myCommon.closeLoading();
-			console.log("data: " + JSON.stringify(data));
+//			console.log("data: " + JSON.stringify(data));
 			if(data["code"] != "200") {
 				muiToast('信息发布失败');
 			} else if(typeof(callback) == "function") {
@@ -495,7 +495,6 @@ function getConstructionListDetail(jsonId){
 				return ;
 			}
 			//console.log("data: " + JSON.stringify(data));
-			console.log(data)
 			if(typeof(data["data"]) == "string"){
 				data["data"] = JSON.parse(data["data"]);
 			}
@@ -520,7 +519,7 @@ function getConstructionList(){
 					muiToast('获取列表信息失败');
 					return ;
 				}
-				console.log("data: " + JSON.stringify(data["data"]));
+//				console.log("data: " + JSON.stringify(data["data"]));
 				if(data["data"]){
 					var listData = "";
 					$.each(data["data"], function(index,item) {
