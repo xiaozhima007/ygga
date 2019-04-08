@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>铁塔组立施工</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/ggtpj.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left" id="backBtn"></a>
+		<h1 class="mui-title">铁塔组立施工</h1>
+		<a class="mui-icon mui-pull-right" id="cacleBtn" hrefData="ggtpj-towerList.html">取消</a>
+	</header>
+	<div id="main-body" class="mui-content">
+		<form id="formTower" data-id="1" data-page="p2" data-loop-id="-1" data-code="GGTPJ_XJ" class="mui-input-group" method="get" action="ggtpj-towerList.html">
+			<div class="mui-row form-title">节点间主材弯曲</div>
+			<div class="mui-input-row form-select">
+				<input type="text" format="options" readonly="readonly" required="true" data-options='[]' name="text_wanqu" value="" placeholder="请选择" />
+                <input type="text" class="hide" name="wanqu" value="" />
+				<span class="mui-icon mui-icon-forward"></span>
+			</div>
+			<div class="mui-row form-title">直线塔结构倾斜%</div>
+			<div class="mui-row form-input">
+				<div class="mui-col-sm-6 mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>一般塔</label>
+						<input type="radio"  name="qingxies" typeName= "yibanta" data-options='[]' value="" />
+					</div>
+				</div>
+				<div class="mui-col-sm-6 mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>高塔</label>
+						<input type="radio"  data-options='[]' typeName= "gaota" name="qingxies" value="" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-input-row form-input top-line bottom-line form-select">
+				<input type="text" readonly="readonly" name="qingxie" format="options" required="true" value="" placeholder="请输入" />
+			</div>
+			<div class="mui-row form-title">螺栓坚固</div>
+            <div class="mui-row form-grid">
+				<div class="mui-row form-item-padding">
+                <div class="mui-col-sm-3 mui-col-xs-3 form-left-label">架线前</div>
+					<div class="mui-col-sm-9 mui-col-xs-9">
+						<div class="mui-input-row">
+							<input type="uint" maxlength="10" required="true" name="lsjg1" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+                <div class="mui-col-sm-3 mui-col-xs-3 form-left-label">架线后</div>
+					<div class="mui-col-sm-9 mui-col-xs-9">
+						<div class="mui-input-row">
+							<input type="uint" maxlength="10" required="true" name="lsjg2" value="" />
+						</div>
+					</div>
+				</div>
+            </div>			
+			<div class="mui-button-row btnPub">
+				<button type="button" data-loading-text="发布" class="mui-btn" id="btnStepPublish">发布</button>
+			</div>
+		</form>
+	</div>
+    <script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="../../plugins/mui/js/mui.min.js"></script>
+	<script type="text/javascript" src="../../plugins/mui/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../common/js/common.js"></script>
+    <script type="text/javascript" src="js/ggtpj.js"></script>
+</body>
+</html>

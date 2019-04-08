@@ -1,0 +1,153 @@
+/*MUI默认样式调整*/
+body{
+	font-family:PingFangSC-Regular;
+}
+.mui-bar-nav{
+	background:#4a90e2;
+	height:48px;
+}
+mui-bar-nav .mui-icon{
+	padding-top: 6px;
+}
+.mui-bar-nav .mui-pull-left{
+	font-size:32px;
+	color:#ffffff;
+	left:-5px;
+	top:-2px;
+}
+.mui-bar-nav .mui-pull-right{
+	font-size:18px;
+	color:#ffffff;
+	position: relative;
+	top: 6px;	
+}
+.mui-bar-nav .mui-title {
+	font-size:22px;
+	color:#ffffff;
+	font-weight: normal;
+}
+.T-today,.T-time{
+	background-color: #ffffff;
+	padding: 20px 0 15px 15px;
+}
+.sjsc-list li{
+	padding: 0;
+}
+.sjsc-list li:after{
+	left: 0;
+}
+.sjsc-list .textarea{
+	padding:10px 15px;
+	min-height:60px;
+	line-height: 1.5;
+}
+.sjsc-list .textarea:empty::before{
+	color:lightgrey;
+	content:attr(placeholder);
+}
+
+.sjsc-list .conTitle{
+	display: block;
+	background-color:rgb(237,237,240);
+	padding: 10px 0 10px 15px;
+	width:100%;
+}
+.pickall{
+	background:rgba(233,233,233,0.4);
+	border-bottom:1px solid rgba(151,151,151,0.4);		
+}
+.pick-bz{
+	font-size:18px;
+	color:#4a90e2;
+	text-align:left;
+	padding:10px 25px 7px 18px;
+	line-height:25px;
+}
+.mui-scroll .mui-input-row{
+	padding-top:4px;
+	margin-left:-4px;
+	border-bottom:1px solid rgba(151,151,151,0.4);
+}
+.pickall-right{
+	border-bottom:none;
+	float:right;
+}
+.pickall .mui-checkbox label{
+	font-family:PingFangSC-Regular;
+	font-size:16px;
+	color:#666666;
+	margin-top: 2px;	
+}
+
+.mui-checkbox input[type=checkbox]{
+	margin-top:8px;
+	width:14px;
+}
+.mui-checkbox input[type=checkbox]:before {
+	font-family:"iconfont" !important;
+	content: '\e74a';
+	font-size: 14px;
+}
+.mui-checkbox input[type=checkbox]:checked ~ div{
+	background-color: #f5f5f5;
+}
+.mui-checkbox input[type=checkbox]:checked:before {
+	content: '\e74b';
+	font-size: 14px;
+}
+.mui-checkbox label{
+	padding-left:46px!important;
+}
+.white-space{
+	height:30px;
+	background: white;
+}
+.voiceControl{
+	padding:5px 10px;
+}
+.voiceControl .voiceIcon{
+	margin-right:5px;
+	vertical-align: middle;
+	width:20px;
+	height:20px;
+}
+.voiceControl .voiceTime{
+	vertical-align: middle;
+	height:20px;
+	line-height: 20px;
+	color:rgb(23,171,227)
+}
+#btnStepNext{
+	height:60px;
+	background-color:rgb(245,245,245);	
+	font-size:24px;
+	color:#333333;
+	border:none;
+}
+#btn-sub{
+	position:fixed;
+	bottom:0;
+	padding: 0;
+	height:60px;
+	background:rgb(245,245,245);	
+	margin-bottom: 0;
+	font-size:24px;
+	color:#333333;
+	border:none;
+	z-index:100;
+}
+#bzList{
+	background:#FFFFFF;
+	top:87px;
+	height:auto;
+	
+}
+.mui-popup-inner{
+	padding:38px;
+}
+.mui-popup-title{
+	display: none;
+}
+.mui-popup-text{
+	font-size:20px!important;
+}

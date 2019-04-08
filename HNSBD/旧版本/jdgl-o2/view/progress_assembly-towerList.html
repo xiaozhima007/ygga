@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>组塔进度</title>
+		<link rel="stylesheet" type="text/css" href="../mui/css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../common/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/progressManagement.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <a class="mui-icon mui-icon-plusempty mui-pull-right createNew" hrefData = createNewTower.html"></a>
+		    <h1 class="mui-title">组塔进度</h1>
+		</header>
+		<div class="mui-content">
+			<form action="detail_tower.html">				
+				<div class="mui-input-row mui-search title-search">
+					<input id="search" type="search" class="mui-input-speech mui-input-clear" placeholder="请输入塔杆编码">
+				</div>
+				<ul class="mui-table-view towerList">
+				        <li class="mui-table-view-cell">
+				            <a class="mui-navigate-right">杆塔编码  <span>8S036</span></a>
+				        </li>				        			
+				    </ul>
+			</form>
+			
+		</div>
+		<script src="../mui/js/mui.min.js"></script>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../common/js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/progressManagement.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

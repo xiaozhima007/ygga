@@ -1,0 +1,189 @@
+body{
+	background-color:#ffffff;
+}
+.mui-bar{
+	background:#4a90e2;
+	background-image:linear-gradient(140deg, #0093ce 0%, #343285 100%);
+	height:46px;
+}
+.mui-title{
+	color:#ffffff;
+	font-family:MicrosoftYaHei-Bold;
+	font-size:18px;
+	letter-spacing:-0.34px;
+	text-align:center;	
+}
+.mui-icon-left-nav{
+	color:#ffffff;
+}
+.mui-action-back{
+	padding-left: 6px!important;
+}
+.mui-action-back:before{
+	font-size: 32px;
+}
+.listTitle{
+	position:relative;
+	height:36px;
+	line-height:36px;
+	background-color: #f7f7f7;
+	color:#666666;
+	font-family:MicrosoftYaHei;
+	font-size:12px;	
+	text-indent: 26px;
+}
+.listTitle::before{
+	position: absolute;
+	left:16px;
+	top:50%;
+	margin-top:-5px;	
+	content: "";
+	width:4px;
+	height:10px;
+	border-radius: 2px;
+	background-color:#ef827d;
+}
+.progressList .mui-table-view-cell{
+	position:relative;
+	padding:21px 15px;
+	text-indent: 40px;
+}
+.progressList .mui-table-view-cell::before{
+	content: "";
+	display: block;
+	position: absolute;
+	margin-top:8px;
+	width:25px;
+	height:25px;
+	background:url("../img/settings.png") no-repeat center/contain;
+	
+}
+.progressList .mui-table-view-cell a{
+	font-family:MicrosoftYaHei;
+	font-size:20px;
+	color:#333333;
+	letter-spacing:-0.68px;
+}
+.progressList .mui-table-view-cell::after{
+	left:0;
+}
+.progressList .mui-table-view-cell a::after{
+	display:none
+}
+.createNew{
+	padding-top:2px !important;
+}
+.mui-icon-plusempty:before {
+	color:#ffffff;
+	font-size:44px;
+}
+.mui-content{
+	background:#ffffff;
+}
+.title-search{
+	width:92%;
+	margin:22px auto 0;
+}
+.title-search .mui-placeholder{
+	text-align:left;
+	text-indent: 3px;
+	top:1px;
+}
+#search{
+	background-color: rgba(0,0,0,0.05);
+}
+.towerList::before,.towerList::after,.towerList li::after{
+	background-color: #d9d9d9;
+	left:0;
+}
+.towerList li{
+	padding:13px 15px;
+}
+.towerList a{
+	font-family:PingFangSC-Semibold;
+	font-size:18px;
+	color:#333333!important;
+}
+.towerList a::after{
+	right:4px;
+	color: #999999;
+	font-size:31px;
+	font-weight: bold;
+}
+.listContent{
+	top:88px;
+	height:600px;
+}
+.form-title{
+	background:rgba(233,233,233,.4);
+	height:40px;
+	line-height: 40px;
+	padding-left: 13px;
+	border-bottom: 1px solid #d9d9d9;
+	font-family:PingFangSC-Regular;
+	font-size:18px;
+	color:#333333;
+}
+.mui-input-row.form-select{
+	height:48px;
+	line-height: 48px;
+}
+.form-select span.mui-navigate-right{
+	color:#999999;
+	font-size: 30px;
+	font-weight: bold;
+}
+.form-select span.mui-navigate-right::after{
+	right:2px;	
+}
+.hide{
+	display: none;
+}
+#btn-sub{
+	position:fixed;
+	bottom:0;
+	padding: 0;
+	height:60px;
+	background:rgb(245,245,245);	
+	margin-bottom: 0;
+	font-size:24px;
+	color:#333333;
+	border:none;
+	z-index:100;
+}
+.form-title.detail-title,.form-title.detail-title span{
+	font-family:PingFangSC-Semibold;
+	font-size:18px;	
+}
+.form-title.detail-title span{
+	margin-left: 6px;
+}
+.listContent.listDetail{
+	top:35px;
+}
+.aotoFill{
+	border-bottom: 1px solid #d9d9d9;
+	padding:2px 0;
+}
+.aotoFill div{
+	margin-top:10px;
+	text-indent: 15px;
+	font-family:PingFangSC-Regular;
+	font-size: 16px;
+	color:#666666;	
+}
+.aotoFill input{
+	padding-top:5px;
+	padding-bottom:5px;
+	font-family:ArialMT;
+	font-size:18px;
+	color:#333333;
+	height:30px
+}
+.mui-input-row::after{
+	left:0px!important;
+}
+.form-title-R{
+	float:right;
+	margin-right: 15px;
+}

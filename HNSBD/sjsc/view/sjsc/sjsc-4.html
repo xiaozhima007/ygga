@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>三交三查</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../common/css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/sjsc.css"/>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-icon mui-icon-left-nav mui-pull-left" id = "backBtn"></a>
+		    <sapn class="mui-title">三交三查</sapn>
+		</header>		
+		<div class="mui-content">
+			<form action="" method="get" format = "xqData" formPage = "3">								
+				<div class="T-time"></div>
+				<ul class="mui-table-view sjsc-list">
+						<li class="mui-table-view-cell ">
+							<span class = "conTitle">1.查着装</span>
+							<div class = "content">
+								<div class="mui-input-row">
+									<div class = "textarea" name = "czz">有无衣衫不整，是否有穿拖鞋，短裤情况？是否佩戴工作证，是否戴手套，穿软底鞋等，安全帽是否正确佩戴</div>
+								</div>
+								
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<span class = "conTitle">2.查三宝</span>
+							<div class = "content">
+								<div class="mui-input-row">
+									<div class = "textarea" name = "csb">安全帽是否合格；安全带使用是否正确？是否经过检验，合格标识是否齐全是否在有效期？是否有磨损？挂钩是否完好？保险是否可靠？还有二防绳：是否经过检验，合格标识是否齐全？是否在有效期？是否有磨损？挂钩是否完好？保险是否可靠？</div>
+								</div>
+								
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<span class = "conTitle">3.查精神状态</span>
+							<div class = "content">
+								<div class="mui-input-row">
+									<div class = "textarea" name = "cjszt">所有班组人员要精神状态良好。</div>
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<span class = "conTitle">4.交任</span>
+							<div class = "content">
+								<div class="mui-input-row">
+									<div class = "textarea" name = "jr"></div>
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<span class = "conTitle">5.交技</span>
+							<div class = "content">
+								<div class="mui-input-row">
+									<div class = "textarea" name = "jj"></div>
+								</div>							
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<span class = "conTitle">6.交安</span>
+							<div class = "content">
+								<div class="mui-input-row">
+									<div class = "textarea" name = "ja"></div>
+								</div>
+							</div>
+						</li>
+				</ul>
+			</form>		
+		</div>
+		
+		<script src="../../plugins/mui/js/mui.min.js"></script>
+		<script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
+		<script src="../../common/js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/sjsc-pick.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

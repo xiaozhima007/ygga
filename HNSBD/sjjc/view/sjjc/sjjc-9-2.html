@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>三级检查</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/mui/css/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../common/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/sjjc.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left" id="backBtn"></a>
+		<h1 class="mui-title">架线专检记录</h1>
+		<a class="mui-icon mui-pull-right" id="cacleBtn">取消</a>
+	</header>
+	<div id="main-body" class="mui-content">
+		<form id="formTower" data-id="9" data-page="2" data-loop-id="-1" data-code="JXZHJ_SJSC" class="mui-input-group" method="get" action="">	
+            <div class="mui-row form-title">压接管压后弯曲</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="yjgyhwq" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">导地线弧垂</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-6 mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>一般档</label>
+						<input type="radio" name="ddxhc" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-6mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>大跨越</label>
+						<input type="radio" name="ddxhc" value="2" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-grid top-line">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左上</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxhc_ybd_a" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右上</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxhc_dky_a" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左中</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxhc_ybd_b" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右中</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxhc_dky_b" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左下</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxhc_ybd_c" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右下</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxhc_dky_c" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+            <div class="mui-row form-title">导地线相（极）间弧垂偏差</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-6 mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>一般档</label>
+						<input type="radio" name="ddxxjhc" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-6mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>大跨越</label>
+						<input type="radio" name="ddxxjhc" value="2" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-grid top-line">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左上</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxxjhc_ybd_a" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右上</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxxjhc_dky_a" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左中</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxxjhc_ybd_b" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右中</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxxjhc_dky_b" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左下</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxxjhc_ybd_c" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右下</label>
+							<input type="decimal" maxlength="16" required="true" name="ddxxjhc_dky_c" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+            <div class="mui-row form-title">同相（极）子导线间弧垂偏差</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-6 mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>220-1000kv</label>
+						<input type="radio" name="txzdx" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-6mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>±800kv</label>
+						<input type="radio" name="txzdx" value="2" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-row form-grid top-line">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左上</label>
+							<input type="decimal" maxlength="16" required="true" name="txzdx_one_a" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右上</label>
+							<input type="decimal" maxlength="16" required="true" name="txzdx_two_a" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左中</label>
+							<input type="decimal" maxlength="16" required="true" name="txzdx_one_b" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右中</label>
+							<input type="decimal" maxlength="16" required="true" name="txzdx_two_b" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左下</label>
+							<input type="decimal" maxlength="16" required="true" name="txzdx_one_c" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右下</label>
+							<input type="decimal" maxlength="16" required="true" name="txzdx_two_c" value="" />
+						</div>
+					</div>
+				</div>
+            </div>
+            
+            <div class="mui-row form-title">悬垂串倾斜（线夹迈步）</div>
+			<div class="mui-row form-grid top-line">
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左上</label>
+							<input type="decimal" maxlength="16" required="true" name="xccqx_a" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右上</label>
+							<input type="decimal" maxlength="16" required="true" name="xccqx_b" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左中</label>
+							<input type="decimal" maxlength="16" required="true" name="xccqx_c" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右中</label>
+							<input type="decimal" maxlength="16" required="true" name="xccqx_d" value="" />
+						</div>
+					</div>
+				</div>
+				<div class="mui-row form-item-padding">
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>左下</label>
+							<input type="decimal" maxlength="16" required="true" name="xccqx_e" value="" />
+						</div>
+					</div>
+					<div class="mui-col-sm-6 mui-col-xs-6">
+						<div class="mui-input-row">
+                            <label>右下</label>
+							<input type="decimal" maxlength="16" required="true" name="xccqx_f" value="" />
+						</div>
+					</div>
+				</div>
+            </div>          
+            <div class="mui-row form-title">防震锤及阻尼线安装距离</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="fczjznazjl" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+             <div class="mui-row form-title">绝缘避雷线放电间隙</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="jyblxfdjx" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+            <div class="mui-row form-title">间隔棒安装位置</div>
+            <div class="mui-row form-input">
+				<div class="mui-col-sm-6 mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>端次档距</label>
+						<input type="radio" name="jgbazwz" value="1" />
+					</div>
+				</div>
+				<div class="mui-col-sm-6mui-col-xs-6">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>中间次档距</label>
+						<input type="radio" name="jgbazwz" value="2" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-input-row form-input top-line">
+				<input type="decimal" name="jgbazwz_bz" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+             <div class="mui-row form-title">转角、终端塔向受力反方向侧倾斜（mm）</div>
+			<div class="mui-input-row form-input">
+				<input type="text" name="zjcdcqx" required="true" value="" maxlength="32" placeholder="" />
+			</div>
+			<div class="mui-row form-title">备注</div>
+			<div class="mui-input-row">
+				<textarea name = "remark" required="true" rows="4" placeholder="在此输入内容"></textarea>
+			</div>
+			
+			<div class="mui-button-row">
+				<button type="button" data-loading-text="发布" class="mui-btn" id="btnStepPublish">发布</button>
+			</div>
+		</form>
+	</div>
+    <script type="text/javascript" src="../../plugins/zepto/zepto.min.js"></script>
+    <script type="text/javascript" src="../../plugins/mui/js/mui.min.js"></script>
+	<script type="text/javascript" src="../../plugins/mui/js/mui.picker.min.js"></script>
+    <script type="text/javascript" src="../../common/js/common.js"></script>
+    <script type="text/javascript" src="js/sjjc.js"></script>
+</body>
+</html>

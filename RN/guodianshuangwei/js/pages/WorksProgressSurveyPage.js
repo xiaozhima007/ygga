@@ -5,8 +5,18 @@ export default class WorksProgressSurveyPage extends Component {
     render(){
         return (
             <View>
-                <Text>这里是进度概况</Text>
+                <View>
+                    <Text></Text>
+                </View>
             </View>
+        )
+    }
+}
+
+class TitleBar extends Component {
+    render(){
+        return(
+            <View></View>
         )
     }
 }

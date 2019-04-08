@@ -11,12 +11,16 @@ import NoticeDetailPage from '../pages/NoticeDetailPage';
 import WorksProgressSurveyPage from '../pages/WorksProgressSurveyPage';
 import WorksProgressPlanPage from '../pages/WorksProgressPlanPage';
 import WorksProgressFeedbackPage from '../pages/WorksProgressFeedbackPage';
+import searchBar from '../pages/searchBar';
 
 const WorksProgressTopNavigator = createMaterialTopTabNavigator({
     WorksProgressSurveyPage:{
         screen: WorksProgressSurveyPage,
         navigationOptions:{
-            tabBarLabel:"进度概况"
+            tabBarLabel:"进度概况",
+            navigationOptions:{
+
+            }
         }
     },
     WorksProgressPlanPage:{
@@ -45,7 +49,7 @@ const WorksProgressTopNavigator = createMaterialTopTabNavigator({
             height: 76
         },
         style:{
-            backgroundColor: 'white'
+            //backgroundColor: 'white'
         }
 
     }
@@ -72,6 +76,9 @@ const RootNavigator = createStackNavigator({
     },
     WorksProgressTopNavigator:{
         screen: WorksProgressTopNavigator
+    },
+    searchBar:{
+        screen: searchBar
     }
 })
 

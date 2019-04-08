@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
-
+import searchBar from './searchBar'
 
 
 export default class WorkbenchPage extends Component {
@@ -22,6 +22,10 @@ export default class WorkbenchPage extends Component {
           <Button
             title = "工程进度"
             onPress = {()=>navigation.navigate('WorksProgressTopNavigator')}
+          />
+          <Button
+            title = "搜索框"
+            onPress = {()=>navigation.navigate('searchBar')}
           />
         </View>
         

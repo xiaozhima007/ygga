@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>新建组塔</title>
+		<link rel="stylesheet" type="text/css" href="../mui/css/mui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../mui/css/mui.picker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../common/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/progressManagement.css"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">新建组塔</h1>
+		</header>
+		<div class="mui-content">
+		    <form class="mui-input-group">
+		        <div class="mui-row form-title">塔杆编码</div>
+				<div class="mui-input-row form-select">
+					<input type="text" format="options" readonly="readonly" required="true" data-options='[]' name="text_tower_number" value="" placeholder="请选择" />
+	                <input type="text" class="hide" name="tower_number" value="" />
+					<span class="mui-navigate-right"></span>
+				</div>
+				<button type="button" class="mui-btn mui-btn-block" id = "btn-sub">发布</button>
+				<div class="mui-scroll-wrapper listContent">
+				    <div class="mui-scroll">
+				        <!--这里放置真实显示的DOM内容-->
+				        <div class="mui-row form-title">第一级完成日期</div>
+				        <div class="mui-input-row form-select">
+				        	<input type="text" format="date" readonly="readonly" required="true" name="date_leve1_1" value=""/>
+				        	<span class="mui-navigate-right"></span>
+				        </div>					        				        
+				        
+				    </div>
+				</div>
+				
+				
+				
+		        
+		    </form>
+		</div>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../mui/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../mui/js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../common/js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/progressManagement.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

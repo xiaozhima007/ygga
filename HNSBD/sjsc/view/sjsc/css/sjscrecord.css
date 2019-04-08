@@ -1,0 +1,151 @@
+#calendar{
+	background:#ffffff;
+}
+.direction{
+		height:30px;
+		line-height:30px;
+		text-align:center;
+		margin-bottom:20px;
+	}
+.timeTitle{
+	display: inline-block;
+	margin-top:20px;
+}
+#dirL,#dirR{
+	position:absolute;
+	color:#666;
+	top:20px
+}
+#dirL{
+	left:15px;
+}
+#dirR{
+	right:15px;
+}
+.contentRecord{
+	padding: 10px 4px 4px 4px;
+	text-align:center
+
+}
+.contentRecord .conTitle{
+	display:flex;
+	margin-bottom:10px
+}
+.contentRecord .conTitle span{
+	display:block;
+	flex:auto;
+	font-size:12px;
+	color:#999
+}
+.conDate{
+	display:flex;
+	flex-wrap:wrap;
+}
+.conDate span{
+	display:block;
+	width:14.2%;
+	padding:3% 0;
+	font-family:ArialMT;
+	font-size:16px;	
+}
+.conDate span.today{
+	color:white;
+	position:relative;
+}
+.conDate span.today::before{
+	content:"";
+	display:block;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-18px auto auto -18px; 
+	width:36px;
+	height:36px;
+	background:#4a90e2;
+	border-radius:100%;
+	z-index:-1;
+}
+.ontap{
+	position:relative;
+}
+.ontap::before{
+	content:"";
+	display:block;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-17px auto auto -18px; 
+	width:34px;
+	height:34px;
+	border:1px solid #1E90FF;
+	border-radius:100%;
+	z-index:-1;
+}
+.conDate span.unread{
+	position:relative;
+}
+.conDate span.unread::after{
+	content:"";
+	display:block;
+	position:absolute;
+	top:22%;
+	right:24%; 
+	width:5px;
+	height:5px;
+	background-color:red;
+	border-radius:100%;
+	
+}
+.unactive{
+	color:#ccc;
+}
+.unreadbz{
+	font-family:PingFangSC-Regular;
+	font-size:16px;
+	color:#666666;
+	text-align:left;
+	text-indent: 16px;
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+	height:30px;
+	line-height:30px;
+	background:#f5f5f5;
+} 
+.unreadbzlist{
+	position:relative
+}
+#bzRecord{
+	top:1px;
+	min-height:350px;
+	
+}
+#bzRecord ul{
+	-padding-top:5px;
+}
+#bzRecord ul li{
+	padding:8px 15px;
+	font-family:PingFangSC-Regular;
+	font-size:18px;
+	color:#333333;
+	text-align:left;
+}
+#bzRecord ul:after,#bzRecord ul li:after{
+	left:0px;
+}
+.bzxq{
+	margin: 5px 0 10px 0px;
+	font-weight: bold;
+}
+.bzxq span:nth-child(2){
+	float:right;
+}
+.unreadRed{
+	color:red
+}
+.tsDate{
+	color:#666;
+	font-size: 16px;
+}
+.tsDate span:nth-child(1){
+	margin-right: 10px;
+}
